@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 rootProject.name = "RDPodcast"
 include (":app")
 include(":core")
+include(":screen")
+include(":screen:onboarding")
