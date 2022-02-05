@@ -41,6 +41,7 @@ android {
 dependencies {
     implementation(project(Module.CORE))
     implementation(project(Screen.ONBOARDING))
+    implementation(project(Screen.MAIN))
     implementation(Lib.AndroidX.coreKtx)
     implementation(Lib.AndroidX.appCompat)
     implementation(Lib.AndroidX.material)

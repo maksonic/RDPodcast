@@ -9,4 +9,5 @@ rootProject.name = "RDPodcast"
 include (":app")
 include(":core")
 include(":screen")
+include(":screen:main")
 include(":screen:onboarding")

@@ -3,4 +3,5 @@
  */
 object Screen {
     const val ONBOARDING = ":screen:onboarding"
+    const val MAIN = ":screen:main"
 }

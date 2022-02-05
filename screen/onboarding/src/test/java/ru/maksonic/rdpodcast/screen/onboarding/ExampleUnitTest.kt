@@ -1,4 +1,4 @@
-package ru.maksonic.rdpodcast.onboarding
+package ru.maksonic.rdpodcast.screen.onboarding
 
 import org.junit.Test
 
