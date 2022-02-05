@@ -8,6 +8,12 @@ class Lib {
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.1"
         const val material = "com.google.android.material:material:1.5.0"
+    }
+
+    object Navigation {
+        private const val version = "2.4.0"
+        const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
+        const val ui = "androidx.navigation:navigation-ui-ktx:$version"
 
     }
 

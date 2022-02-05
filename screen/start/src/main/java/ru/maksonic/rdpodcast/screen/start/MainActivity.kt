@@ -1,4 +1,4 @@
-package ru.maksonic.rdpodcast
+package ru.maksonic.rdpodcast.screen.start
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
