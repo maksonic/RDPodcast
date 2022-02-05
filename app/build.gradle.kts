@@ -40,6 +40,8 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(project(Navigation.API))
+    implementation(project(Navigation.IMPL))
     implementation(project(Screen.ONBOARDING))
     implementation(project(Screen.MAIN))
     implementation(project(Screen.START))

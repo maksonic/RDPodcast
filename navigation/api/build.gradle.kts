@@ -32,13 +32,5 @@ android {
 }
 
 dependencies {
-    implementation(project(Navigation.IMPL))
 
-    implementation(Lib.AndroidX.coreKtx)
-    implementation(Lib.AndroidX.appCompat)
-    implementation(Lib.AndroidX.material)
-
-    testImplementation(Lib.TestLibraries.junit)
-    androidTestImplementation(Lib.AndroidTestLibraries.junitExt)
-    androidTestImplementation(Lib.AndroidTestLibraries.Espresso.core)
 }
