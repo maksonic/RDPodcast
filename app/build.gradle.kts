@@ -43,6 +43,8 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(project(Shared.UI_MODEL))
+    implementation(project(Shared.UI_RES))
     implementation(project(Navigation.API))
     implementation(project(Navigation.IMPL))
     implementation(project(Screen.ONBOARDING))

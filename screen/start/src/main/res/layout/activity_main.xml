@@ -20,6 +20,6 @@
         style="@style/BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
+        android:layout_gravity="bottom"
         app:menu="@menu/bottom_nav_menu" />
 </FrameLayout>

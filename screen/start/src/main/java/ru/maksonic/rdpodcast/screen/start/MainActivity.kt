@@ -2,6 +2,7 @@ package ru.maksonic.rdpodcast.screen.start
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import ru.maksonic.rdpodcast.screen.start.databinding.ActivityMainBinding
 
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
            else the user is taken to the home screen.*/
         navGraph.setStartDestination(R.id.onboardingScreen)
         navController.graph = navGraph
+
+        if (navController.currentDestination?.id == R.id.onboardingScreen) {
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }

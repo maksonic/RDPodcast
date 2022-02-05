@@ -4,7 +4,7 @@
     <item
         android:id="@+id/homeScreen"
         android:icon="@drawable/ic_home_screen"
-        android:title="@string/scr_title_home" />
+        android:title="@string/scr_title_main" />
 
     <item
         android:id="@+id/categoriesScreen"

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scr_title_main">Главное</string>
+    <string name="scr_title_categories">Категории</string>
+    <string name="scr_title_collection">Коллекция</string>
+</resources>
