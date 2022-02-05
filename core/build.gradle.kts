@@ -29,8 +29,12 @@ android {
     kotlinOptions {
         jvmTarget = Config.jvmTarget
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(Lib.Navigation.fragment)
 
 }

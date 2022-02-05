@@ -29,9 +29,13 @@ android {
     kotlinOptions {
         jvmTarget = Config.jvmTarget
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(project(Module.CORE))
     implementation(project(Navigation.API))
 
 }
