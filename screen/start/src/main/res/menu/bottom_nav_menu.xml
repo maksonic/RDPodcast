@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeScreen"
+        android:icon="@drawable/ic_home_screen"
+        android:title="@string/scr_title_home" />
+
+    <item
+        android:id="@+id/categoriesScreen"
+        android:icon="@drawable/ic_category_screen"
+        android:title="@string/scr_title_categories" />
+
+
+    <item
+        android:id="@+id/collectionsScreen"
+        android:icon="@drawable/ic_collections_screen"
+        android:title="@string/scr_title_collection" />
+
+</menu>

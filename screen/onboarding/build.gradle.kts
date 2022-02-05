@@ -37,5 +37,6 @@ android {
 dependencies {
     implementation(project(Module.CORE))
     implementation(project(Navigation.API))
-
+    implementation(Lib.AndroidX.appCompat)
+    implementation(Lib.AndroidX.material)
 }

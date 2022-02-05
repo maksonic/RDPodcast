@@ -41,6 +41,8 @@ dependencies {
     implementation(Lib.AndroidX.coreKtx)
     implementation(Lib.AndroidX.appCompat)
     implementation(Lib.AndroidX.material)
+    implementation(Lib.Navigation.fragment)
+    implementation(Lib.Navigation.ui)
 
     testImplementation(Lib.TestLibraries.junit)
     androidTestImplementation(Lib.AndroidTestLibraries.junitExt)
