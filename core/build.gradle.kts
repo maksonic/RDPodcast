@@ -1,5 +1,5 @@
 plugins {
-    androidApp()
+    androidLibrary()
     kotlinAndroid()
 }
 
@@ -7,16 +7,9 @@ android {
     compileSdk = Config.compileSdk
 
     defaultConfig {
-        applicationId = Config.applicationId
         minSdk = Config.minSdk
         targetSdk = Config.targetSdk
-        versionCode = Config.versionCode
-        versionName = Config.versionName
-
         testInstrumentationRunner = Config.androidJunitRunner
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -39,12 +32,5 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.CORE))
-    implementation(Lib.AndroidX.coreKtx)
-    implementation(Lib.AndroidX.appCompat)
-    implementation(Lib.AndroidX.material)
 
-    testImplementation(Lib.TestLibraries.junit)
-    androidTestImplementation(Lib.AndroidTestLibraries.junitExt)
-    androidTestImplementation(Lib.AndroidTestLibraries.Espresso.core)
 }

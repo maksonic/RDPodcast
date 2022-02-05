@@ -9,12 +9,16 @@ object Config {
     const val compileSdk = 32
     const val targetSdk = 31
     const val minSdk = 23
-    const val buildTools = "30.0.3"
-    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val versionName = "1.0"
     const val versionCode = 1
+    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val androidJunitRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     val java11 = JavaVersion.VERSION_11
     const val jvmTarget = "11"
+}
+
+object BuildType {
+    const val DEBUG = "debug"
+    const val RELEASE = "release"
 }
