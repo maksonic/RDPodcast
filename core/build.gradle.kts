@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation(Lib.AndroidX.material)
     implementation(Lib.Navigation.fragment)
 
 }

@@ -38,6 +38,8 @@ dependencies {
     implementation(project(Module.CORE))
     implementation(project(Navigation.IMPL))
     implementation(project(Shared.UI_RES))
+    implementation(project(Screen.ONBOARDING))
+    implementation(project(Screen.MAIN))
 
     implementation(Lib.AndroidX.coreKtx)
     implementation(Lib.AndroidX.appCompat)

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_24dp">24dp</dimen>
+    <dimen name="padding_32dp">32dp</dimen>
+    <dimen name="padding_54dp">54dp</dimen>
+
+    <dimen name="elevation_0dp">0dp</dimen>
+    <dimen name="elevation_1dp">1dp</dimen>
+    <dimen name="elevation_4dp">4dp</dimen>
+    <dimen name="elevation_8dp">8dp</dimen>
+    <dimen name="elevation_16dp">16dp</dimen>
+
+    <dimen name="elevation_toolbar">2dp</dimen>
+
+    <dimen name="corner_radius_8dp">8dp</dimen>
+    <dimen name="corner_radius_16dp">16dp</dimen>
+    <dimen name="corner_radius_24dp">24dp</dimen>
+
+    <dimen name="btn_small_action">24dp</dimen>
+    <dimen name="btn_nav_ic">32dp</dimen>
+    <dimen name="btn_player_def_size">36dp</dimen>
+    <dimen name="ic_btn_modal_bottom_sheet">24dp</dimen>
+    <dimen name="btn_primary">62dp</dimen>
+    <dimen name="btn_secondary">62dp</dimen>
+    <dimen name="player_collapsed">72dp</dimen>
+
+    <dimen name="input_field_height">56dp</dimen>
+    <dimen name="txt_ultra_small_12sp">12sp</dimen>
+</resources>

@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(project(Module.DOMAIN))
     implementation(project(Shared.UI_RES))
     implementation(project(Navigation.API))
     implementation(Lib.AndroidX.appCompat)

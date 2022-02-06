@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/global_graph"
+        app:navGraph="@navigation/start_graph"
         tools:context=".screen.start.MainActivity" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,4 +22,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_nav_menu" />
+
 </FrameLayout>

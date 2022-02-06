@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
 
-    <com.google.android.material.textview.MaterialTextView
+    <LinearLayout
+        android:id="@+id/toolBarOnboarding"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="AAAAA"/>
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            style="@style/Btn.Navigation.RDTheme"
+            android:id="@+id/btnSkipOnboarding"
+            android:layout_width="@dimen/btn_nav_ic"
+            android:layout_height="@dimen/btn_nav_ic"
+            android:layout_marginEnd="@dimen/padding_16dp"
+            android:layout_gravity="end|center_horizontal"
+            app:srcCompat="@drawable/ic_close"/>
+    </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginBottom="@dimen/padding_8dp"
+        android:background="?android:windowBackground"
+        app:tabBackground="@drawable/dots_indicator_selector"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
+        app:tabRippleColor="@color/transparent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnShowAuthBottomSheet"
+        style="@style/Btn.Primary.RDTheme"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_primary"
+        android:layout_marginBottom="@dimen/padding_24dp"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginEnd="@dimen/padding_16dp"
+        android:text="@string/btn_title_create_account" />
 </LinearLayout>

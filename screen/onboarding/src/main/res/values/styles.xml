@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextView.Onboarding.Title.RDTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="maxLines">1</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TextView.Onboarding.Description.RDTheme" parent="Widget.MaterialComponents.TextView">
+
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/color_secondary</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textAlignment">center</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+</resources>

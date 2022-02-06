@@ -1,4 +1,4 @@
-package ru.maksonic.rdpodcast.core.base
+package ru.maksonic.rdpodcast.core.base.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

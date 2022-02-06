@@ -43,6 +43,8 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(project(Module.DATA))
+    implementation(project(Module.DOMAIN))
     implementation(project(Shared.UI_MODEL))
     implementation(project(Shared.UI_RES))
     implementation(project(Navigation.API))
@@ -50,7 +52,8 @@ dependencies {
     implementation(project(Screen.ONBOARDING))
     implementation(project(Screen.MAIN))
     implementation(project(Screen.START))
-
+    implementation(project(Screen.CATEGORIES))
+    implementation(project(Screen.COLLECTIONS))
 
     testImplementation(Lib.TestLibraries.junit)
     androidTestImplementation(Lib.AndroidTestLibraries.junitExt)

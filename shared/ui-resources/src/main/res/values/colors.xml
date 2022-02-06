@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="solitude">#F7F7F7</color>
+    <color name="dim_gray">#EDEDED</color>
+    <color name="gainsboro_gray">#DCDCDC</color>
+    <color name="nero">#212121</color>
+    <color name="ripple">#0AFFFFFF</color>
+    <color name="shadow">#52000000</color>
+    <color name="transparent">#00FFFFFF</color>
+    <!-- -->
+    <color name="dodger_blue">#1877F2</color>
+    <color name="columbia_blue">#bbdefb</color>
+    <color name="shuttle_grey">#65676B</color>
+    <color name="carmine_red_error">#b00020</color>
+
+
+    <color name="color_primary">@color/nero</color>
+    <color name="color_primary_variant">@color/gainsboro_gray</color>
+    <color name="color_on_primary">@color/white</color>
+    <color name="color_secondary">@color/shuttle_grey</color>
+    <color name="color_secondary_variant">@color/dim_gray</color>
+    <color name="color_on_secondary">@color/nero</color>
+    <color name="background">@color/solitude</color>
+    <color name="on_background">@color/white</color>
+    <color name="error">@color/carmine_red_error</color>
+    <color name="on_error">@color/white</color>
+</resources>
