@@ -1,6 +1,9 @@
 plugins {
     androidApp()
     kotlinAndroid()
+    googleServices()
+    hilt()
+    kapt()
 }
 
 android {
@@ -54,6 +57,12 @@ dependencies {
     implementation(project(Screen.START))
     implementation(project(Screen.CATEGORIES))
     implementation(project(Screen.COLLECTIONS))
+
+    implementation(Lib.Emoji.emoji2)
+    implementation(Lib.Emoji.bundled)
+    implementation(Lib.timber)
+    implementation(Lib.Dagger.hilt)
+    kapt(Lib.Dagger.hiltCompiler)
 
     testImplementation(Lib.TestLibraries.junit)
     androidTestImplementation(Lib.AndroidTestLibraries.junitExt)

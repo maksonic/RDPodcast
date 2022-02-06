@@ -1,13 +1,28 @@
 /**
  * @Author: maksonic on 05.02.2022
  */
-class Lib {
+object Lib {
 
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.4.1"
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.1"
         const val material = "com.google.android.material:material:1.5.0"
+    }
+
+    object Dagger {
+        private const val version = "2.40"
+        const val hilt = "com.google.dagger:hilt-android:$version"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
+    }
+
+    object Emoji {
+        private const val version = "1.0.0"
+
+        const val emoji2 = "androidx.emoji2:emoji2:$version"
+        const val bundled = "androidx.emoji2:emoji2-bundled:$version"
+        const val views = "androidx.emoji2:emoji2-views:$version"
+        const val emoji2ViewsHelper = "androidx.emoji2:emoji2-views-helper:$version"
     }
 
     object Navigation {
@@ -17,6 +32,7 @@ class Lib {
 
     }
 
+    const val timber = "com.jakewharton.timber:timber:5.0.1"
 
     object TestLibraries {
         const val junit = "junit:junit:4.13"
