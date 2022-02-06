@@ -48,6 +48,7 @@ dependencies {
     implementation(project(Module.CORE))
     implementation(project(Module.DATA))
     implementation(project(Module.DOMAIN))
+    implementation(project(Feature.USER_AUTH))
     implementation(project(Shared.UI_MODEL))
     implementation(project(Shared.UI_RES))
     implementation(project(Navigation.API))

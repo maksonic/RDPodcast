@@ -1,5 +1,6 @@
 /**
  * @Author: maksonic on 05.02.2022
  */
-class Feature {
+object Feature {
+    const val USER_AUTH = ":feature:user-auth"
 }
