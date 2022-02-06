@@ -32,5 +32,6 @@ android {
 }
 
 dependencies {
-
+    implementation(project(Shared.UI_MODEL))
+    implementation(Lib.Navigation.fragment)
 }

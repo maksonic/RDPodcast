@@ -1,6 +1,8 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    hilt()
+    kapt()
 }
 
 android {
@@ -32,10 +34,14 @@ android {
 }
 
 dependencies {
+    implementation(project(Navigation.API))
     implementation(project(Screen.ONBOARDING))
     implementation(project(Screen.MAIN))
     implementation(project(Screen.CATEGORIES))
     implementation(project(Screen.COLLECTIONS))
     implementation(Lib.Navigation.fragment)
     implementation(Lib.Navigation.ui)
+
+    implementation(Lib.Dagger.hilt)
+    kapt(Lib.Dagger.hiltCompiler)
 }
