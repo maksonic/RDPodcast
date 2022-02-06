@@ -1,6 +1,8 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    hilt()
+    kapt()
 }
 
 android {
@@ -39,4 +41,6 @@ dependencies {
     implementation(project(Navigation.API))
     implementation(Lib.AndroidX.appCompat)
     implementation(Lib.AndroidX.material)
+    implementation(Lib.Dagger.hilt)
+    kapt(Lib.Dagger.hiltCompiler)
 }

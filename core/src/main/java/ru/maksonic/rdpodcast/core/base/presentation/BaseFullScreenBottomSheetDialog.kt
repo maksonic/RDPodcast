@@ -1,5 +1,6 @@
 package ru.maksonic.rdpodcast.core.base.presentation
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,13 +28,14 @@ abstract class BaseFullScreenBottomSheetDialog<VB : ViewBinding> : BottomSheetDi
         super.onStart()
         setFullScreenDialog()
     }
+    private fun getWindowHeight(activity: Activity): Int = activity.window.decorView.height
 
     private fun setFullScreenDialog() {
-        val dialogHeight = requireActivity().window.decorView.height
+        val dialogHeight = getWindowHeight(requireActivity())
         dialog?.let {
             val bottomSheet =
                 it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
-            bottomSheet.layoutParams.height = dialogHeight
+           // bottomSheet.layoutParams.height = dialogHeight
             BottomSheetBehavior.from(bottomSheet).apply {
                 state = BottomSheetBehavior.STATE_EXPANDED
                 peekHeight = dialogHeight

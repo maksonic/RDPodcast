@@ -16,4 +16,9 @@
         <item name="android:backgroundTint">@color/color_primary</item>
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="BottomSheetWithoutShadowDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:backgroundDimAmount">0</item>
+        <item name="behavior_draggable">false</item>
+    </style>
 </resources>
