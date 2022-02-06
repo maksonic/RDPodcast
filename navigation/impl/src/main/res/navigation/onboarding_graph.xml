@@ -4,7 +4,7 @@
     android:id="@+id/onboarding_graph"
     app:startDestination="@id/onboardingScreen">
 
-    <fragment
+    <dialog
         android:id="@+id/onboardingScreen"
         android:name="ru.maksonic.rdpodcast.screen.onboarding.OnboardingScreen"
         android:label="OnboardingScreen" />

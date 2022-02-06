@@ -8,13 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import ru.maksonic.rdpodcast.core.base.presentation.BaseFragment
+import ru.maksonic.rdpodcast.core.base.presentation.BaseFullScreenBottomSheetDialog
 import ru.maksonic.rdpodcast.core.ui.DebounceClickListener
 import ru.maksonic.rdpodcast.screen.onboarding.databinding.ScreenOnboardingBinding
 
 /**
  * @Author: maksonic on 05.02.2022
  */
-class OnboardingScreen : BaseFragment<ScreenOnboardingBinding>() {
+class OnboardingScreen : BaseFullScreenBottomSheetDialog<ScreenOnboardingBinding>() {
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> ScreenOnboardingBinding =
         ScreenOnboardingBinding::inflate
 
