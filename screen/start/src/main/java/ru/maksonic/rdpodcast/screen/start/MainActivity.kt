@@ -1,14 +1,14 @@
 package ru.maksonic.rdpodcast.screen.start
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import ru.maksonic.rdpodcast.screen.onboarding.OnboardingScreen
+import androidx.navigation.ui.setupWithNavController
 import ru.maksonic.rdpodcast.screen.start.databinding.ActivityMainBinding
 
+/**
+ * @Author: maksonic on 05.02.2022
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navGraphContainer) as NavHostFragment
         val navController = navHostFragment.navController
-        val navGraph =
-            navController.navInflater.inflate(R.navigation.start_graph)
-        /* If user not authorized navigation graph set start onboarding screen
-           else the user is taken to the home screen.*/
-        navController.graph = navGraph
+        binding.bottomNavigation.setupWithNavController(navController)
     }
 }

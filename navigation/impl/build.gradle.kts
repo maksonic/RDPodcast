@@ -34,6 +34,8 @@ android {
 dependencies {
     implementation(project(Screen.ONBOARDING))
     implementation(project(Screen.MAIN))
+    implementation(project(Screen.CATEGORIES))
+    implementation(project(Screen.COLLECTIONS))
     implementation(Lib.Navigation.fragment)
     implementation(Lib.Navigation.ui)
 }
