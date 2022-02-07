@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="300"
+        motion:motionInterpolator="linear">
+        <KeyFrameSet>
+
+            <KeyPosition
+                motion:keyPositionType="pathRelative"
+                motion:motionTarget="@id/imgPodcast"
+                motion:framePosition="30"
+                motion:percentX="0.5"
+                motion:pathMotionArc="startHorizontal"/>
+
+
+            <KeyAttribute
+                motion:framePosition="0"
+                android:alpha="0"
+                motion:motionTarget="@+id/bottomSheetIndicator" />
+            <KeyAttribute
+                motion:framePosition="10"
+                android:alpha="1"
+                motion:motionTarget="@+id/bottomSheetIndicator" />
+            <KeyAttribute
+                motion:framePosition="0"
+                android:alpha="1"
+                motion:motionTarget="@+id/btnPlayControlPanel" />
+
+            <KeyAttribute
+                motion:framePosition="10"
+                android:alpha="0"
+                motion:motionTarget="@+id/btnPlayControlPanel" />
+            <KeyAttribute
+                motion:framePosition="100"
+                android:alpha="0"
+                motion:motionTarget="@+id/btnPlayControlPanel" />
+
+            <KeyAttribute
+                motion:framePosition="0"
+                android:alpha="1"
+                motion:motionTarget="@+id/podcastNameCollapsed" />
+
+            <KeyAttribute
+                motion:framePosition="10"
+                android:alpha="0"
+                motion:motionTarget="@+id/podcastNameCollapsed" />
+            <KeyAttribute
+                motion:framePosition="100"
+                android:alpha="0"
+                motion:motionTarget="@+id/podcastNameCollapsed" />
+            <KeyAttribute
+                motion:framePosition="0"
+                android:alpha="0"
+                motion:motionTarget="@+id/controlContainer" />
+            <KeyAttribute
+                motion:framePosition="70"
+                android:alpha="0"
+                motion:motionTarget="@+id/controlContainer" />
+            <KeyAttribute
+                motion:framePosition="80"
+                android:alpha="1"
+                motion:motionTarget="@+id/controlContainer" />
+
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@+id/container"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/player_collapsed"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/bottomSheetIndicator"
+            android:layout_width="32dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="@dimen/padding_16dp"
+            motion:layout_constraintTop_toTopOf="@id/container"
+            motion:layout_constraintStart_toStartOf="@id/container"
+            motion:layout_constraintEnd_toEndOf="@id/container"/>
+
+        <Constraint
+            android:id="@+id/imgPodcast"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/padding_16dp"
+            android:layout_marginTop="@dimen/padding_8dp"
+            android:layout_marginBottom="@dimen/padding_8dp"
+            motion:layout_constraintBottom_toBottomOf="@id/container"
+            motion:layout_constraintDimensionRatio="1:1"
+            motion:layout_constraintStart_toStartOf="@id/container"
+            motion:layout_constraintTop_toTopOf="@id/container" />
+        <Constraint
+            android:id="@+id/podcastNameCollapsed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_8dp"
+            motion:layout_constraintStart_toEndOf="@id/imgPodcast"
+            motion:layout_constraintTop_toTopOf="@id/container"
+            motion:layout_constraintEnd_toStartOf="@id/btnPlayControlPanel"
+            motion:layout_constraintBottom_toBottomOf="@id/container"/>
+        <Constraint
+            android:id="@+id/btnPlayControlPanel"
+            android:layout_width="@dimen/btn_player_def_size"
+            android:layout_height="@dimen/btn_player_def_size"
+            motion:layout_constraintTop_toTopOf="@id/container"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/container"
+            android:layout_marginEnd="@dimen/padding_16dp"/>
+        <Constraint
+            android:id="@+id/controlContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintTop_toBottomOf="@id/imgPodcast"
+            motion:layout_constraintBottom_toBottomOf="parent"/>
+        <Constraint
+            android:id="@+id/clickableView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/player_collapsed"
+            android:visibility="visible"
+            motion:layout_constraintStart_toStartOf="@id/container"
+            motion:layout_constraintEnd_toStartOf="@id/btnPlayControlPanel"
+            android:layout_marginEnd="@dimen/padding_8dp"
+            motion:layout_constraintTop_toTopOf="@id/container"/>
+
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+
+        <Constraint
+            android:id="@+id/imgPodcast"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/padding_32dp"
+            android:layout_marginTop="@dimen/padding_16dp"
+            android:layout_marginEnd="@dimen/padding_32dp"
+            motion:layout_constraintDimensionRatio="1:1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/bottomSheetIndicator" />
+        <Constraint
+            android:id="@+id/container"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <Constraint
+            android:id="@+id/bottomSheetIndicator"
+            android:layout_width="32dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="@dimen/padding_16dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"/>
+        <Constraint
+            android:id="@+id/btnPlayControlPanel"
+            android:layout_width="@dimen/btn_player_def_size"
+            android:layout_height="@dimen/btn_player_def_size" />
+        <Constraint
+            android:id="@+id/podcastNameCollapsed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <Constraint
+            android:id="@+id/controlContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintTop_toBottomOf="@id/imgPodcast"
+            motion:layout_constraintBottom_toBottomOf="parent"/>
+        <Constraint
+            android:id="@+id/clickableView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"/>
+    </ConstraintSet>
+
+</MotionScene>

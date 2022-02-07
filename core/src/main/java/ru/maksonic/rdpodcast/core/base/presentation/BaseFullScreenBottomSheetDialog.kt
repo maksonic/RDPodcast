@@ -1,6 +1,6 @@
 package ru.maksonic.rdpodcast.core.base.presentation
 
-import android.app.Activity
+import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,9 @@ import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+
 
 /**
  * @Author: maksonic on 06.02.2022
@@ -26,16 +28,22 @@ abstract class BaseFullScreenBottomSheetDialog<VB : ViewBinding> : BottomSheetDi
 
     override fun onStart() {
         super.onStart()
-        setFullScreenDialog()
+        setFullScreenDialog(dialog as BottomSheetDialog)
     }
-    private fun getWindowHeight(activity: Activity): Int = activity.window.decorView.height
 
-    private fun setFullScreenDialog() {
-        val dialogHeight = getWindowHeight(requireActivity())
-        dialog?.let {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        // Value -1 means disable like bottom sheet animation
+        dialog.window?.setWindowAnimations(-1)
+        return dialog
+    }
+
+    private fun setFullScreenDialog(dialog: BottomSheetDialog) {
+        val dialogHeight = resources.displayMetrics.heightPixels
+        dialog.let {
             val bottomSheet =
                 it.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
-           // bottomSheet.layoutParams.height = dialogHeight
+            bottomSheet.layoutParams.height = dialogHeight
             BottomSheetBehavior.from(bottomSheet).apply {
                 state = BottomSheetBehavior.STATE_EXPANDED
                 peekHeight = dialogHeight

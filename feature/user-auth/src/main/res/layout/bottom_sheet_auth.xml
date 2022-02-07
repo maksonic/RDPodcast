@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <include layout="@layout/indicator_bottom_sheet" />
+
+    <TextView
+        android:id="@+id/btnGoogleSignUp"
+        style="@style/TextView.ModalItem.Title.RDTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_title_auth_google"
+        app:drawableStartCompat="@drawable/ic_google" />
+
+    <View
+        android:id="@+id/listDivider"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginStart="@dimen/padding_24dp"
+        android:layout_marginEnd="@dimen/padding_24dp"
+        android:background="@color/color_secondary"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp" />
+
+    <TextView
+        android:id="@+id/btnSignUp"
+        style="@style/TextView.ModalItem.Title.RDTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_title_auth_email"
+        app:drawableStartCompat="@drawable/ic_phone" />
+
+    <View
+        android:id="@+id/listDivider3"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginStart="@dimen/padding_24dp"
+        android:layout_marginEnd="@dimen/padding_24dp"
+        android:background="@color/color_secondary"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogIn" />
+
+    <TextView
+        android:id="@+id/btnLogIn"
+        style="@style/TextView.ModalItem.Title.RDTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_16dp"
+        android:text="@string/btn_title_log_in_email"
+        app:drawableStartCompat="@drawable/ic_login" />
+
+    <TextView
+        android:id="@+id/txtHelperTeams"
+        style="@style/TextView.Caption.RDTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginEnd="@dimen/padding_16dp"
+        android:layout_marginBottom="@dimen/padding_24dp"
+        android:lineSpacingMultiplier="1.5"
+        android:text="@string/privacy_and_terms_agreement"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</LinearLayout>

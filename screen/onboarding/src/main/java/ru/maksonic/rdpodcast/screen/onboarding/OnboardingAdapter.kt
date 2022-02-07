@@ -11,22 +11,30 @@ import ru.maksonic.rdpodcast.screen.onboarding.databinding.ItemOnboardingBinding
 class OnboardingAdapter : RecyclerView.Adapter<OnboardingAdapter.OnboardingListViewHolder>() {
 
     private val onboarding = listOf(
-        OnboardingUi(0,
+        OnboardingUi(
+            0,
             "Добро пожаловать!",
             "Заряжайся, совершенствуйся и вдохновляйся.\nСотни аудиоподкастов от Игоря Войтенко",
-            R.drawable.slide_first),
-        OnboardingUi(1,
+            R.drawable.slide_first
+        ),
+        OnboardingUi(
+            1,
             "Слушай в любое время",
             "Полный доступ к аудиоподкастам\nбез интернета 24/7",
-            R.drawable.slide_second),
-        OnboardingUi(2,
+            R.drawable.slide_second
+        ),
+        OnboardingUi(
+            2,
             "Минималистичный дизайн",
             "Добавляй в избранное, ставь лайки\nи делись подкастами с кем хочешь!\nТолько самые необходимые функции.",
-            R.drawable.slide_third),
-        OnboardingUi(3,
+            R.drawable.slide_third
+        ),
+        OnboardingUi(
+            3,
             "Road to the Dream\nПодкасты",
             "Создано для людей\nкоторые не боятся мечтать\nи хотят сделать наш Мир лучше!",
-            R.drawable.slide_fourth)
+            R.drawable.slide_fourth
+        )
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingListViewHolder {

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="action_mainScreen_to_onboarding_graph" type="id" />
+    <item name="action_onboardingScreen_to_auth_graph" type="id" />
+    <item name="action_authBottomSheetDialog_to_screenPrivacyPolicy" type="id" />
 </resources>

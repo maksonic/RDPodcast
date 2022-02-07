@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/authBottomSheetDialog">
+
+    <dialog
+        android:id="@+id/authBottomSheetDialog"
+        android:name="ru.maksonic.rdpodcast.feature.user_auth.AuthBottomSheetDialog"
+        android:label="AuthBottomSheetDialog" >
+        <action
+            android:id="@+id/action_authBottomSheetDialog_to_screenPrivacyPolicy"
+            app:destination="@id/screenPrivacyPolicy" />
+    </dialog>
+    <dialog
+        android:id="@+id/screenPrivacyPolicy"
+        android:name="ru.maksonic.rdpodcast.feature.user_auth.ScreenPrivacyPolicy"
+        android:label="ScreenPrivacyPolicy" />
+</navigation>

@@ -3,4 +3,9 @@
     <string name="scr_title_main">Главное</string>
     <string name="scr_title_categories">Категории</string>
     <string name="scr_title_collection">Коллекция</string>
+
+    <string name="view_state_error_title">Упс, что-то пошло не так…</string>
+    <string name="view_state_error_emoji">😞</string>
+    <string name="view_state_error_btn">Ок</string>
+    <string name="view_state_error_caption">Произошла ошибка.</string>
 </resources>

@@ -17,8 +17,84 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="TextView.Body.RDTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="BottomSheetWithoutShadowDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:backgroundDimAmount">0</item>
         <item name="behavior_draggable">false</item>
+    </style>
+    <style name="TextView.ModalItem.Title.RDTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/padding_24dp</item>
+        <item name="android:paddingTop">@dimen/padding_16dp</item>
+        <item name="android:paddingBottom">@dimen/padding_16dp</item>
+        <item name="android:drawablePadding">@dimen/padding_24dp</item>
+        <item name="drawableTint">@color/color_primary</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">@drawable/ripple</item>
+    </style>
+
+
+    <style name="TextView.Caption.RDTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/color_secondary</item>
+        <item name="android:textAppearance">?attr/textAppearanceCaption</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TextView.ClickableCaption.RDTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:foreground">@drawable/ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="drawableTint">@color/color_primary</item>
+        <item name="android:drawablePadding">@dimen/padding_8dp</item>
+        <item name="android:padding">@dimen/padding_8dp</item>
+    </style>
+
+    <style name="ToolBar.Display.RDTheme" parent="Widget.MaterialComponents.Toolbar">
+        <item name="background">?attr/backgroundColor</item>
+        <item name="navigationIconTint">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ToolBar.Title.Display.RDTheme" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="AppBarLayout.RDTheme" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:background">@color/background</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="TextInputLayout.RDTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="errorIconDrawable">@drawable/ic_error_outline</item>
+        <item name="errorTextColor">@color/error</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:focusable">true</item>
+        <item name="errorTextAppearance">?attr/textAppearanceCaption</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_8dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_8dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_8dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_8dp</item>
+        <item name="boxStrokeColor">@color/color_secondary_variant</item>
+        <item name="hintTextColor">@color/color_secondary</item>
     </style>
 </resources>

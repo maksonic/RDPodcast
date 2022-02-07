@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ru.maksonic.rdpodcast.shared.ui_resources.ToolbarDisplay
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5" />
+
+    <EditText
+        android:id="@+id/birthdayResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:clickable="false"
+        android:focusable="false"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_horizontal"
+        android:paddingStart="@dimen/padding_16dp"
+        android:paddingEnd="@dimen/padding_16dp"
+        android:text="11 февраля 1996 г."
+        android:textSize="16sp" />
+
+    <DatePicker
+        android:id="@+id/birthdaySelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        style="@style/Btn.Primary.RDTheme"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_primary"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/padding_16dp"
+        android:layout_marginEnd="@dimen/padding_16dp"
+        android:layout_marginBottom="@dimen/padding_16dp"
+        android:text="@string/btn_next" />
+</LinearLayout>

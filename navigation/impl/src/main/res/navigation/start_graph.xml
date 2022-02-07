@@ -6,7 +6,11 @@
     <dialog
         android:id="@+id/onboardingScreen"
         android:name="ru.maksonic.rdpodcast.screen.onboarding.OnboardingScreen"
-        android:label="OnboardingScreen" />
+        android:label="OnboardingScreen" >
+        <action
+            android:id="@+id/action_onboardingScreen_to_auth_graph"
+            app:destination="@id/auth_graph" />
+    </dialog>
 
     <fragment
         android:id="@+id/mainScreen"
@@ -20,4 +24,8 @@
         android:id="@+id/collectionsScreen"
         android:name="ru.maksonic.rdpodcast.screen.collections.CollectionsScreen"
         android:label="CollectionsScreen" />
+
+    <include
+        android:id="@+id/auth_graph"
+        app:graph="@navigation/auth_graph" />
 </navigation>

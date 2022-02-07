@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/errorEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_primary"
+        android:textSize="54sp"
+        tools:text="@string/view_state_error_emoji" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_state_error_title"
+        android:textSize="24sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnErrorAccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_54dp"
+        android:text="@string/view_state_error_btn" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_54dp"
+        android:textAlignment="center"
+        tools:text="@string/view_state_error_caption" />
+</merge>

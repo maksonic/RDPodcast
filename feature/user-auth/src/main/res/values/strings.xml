@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_next">Продолжить</string>
+    <string name="hint_password">Пароль</string>
+    <!-- AUTH MODAL BOTTOM SHEET-->
+    <string name="btn_title_auth_google">Войти через Google аккаунт</string>
+    <string name="btn_title_auth_phone">Войти по номеру телефона</string>
+    <string name="btn_title_auth_email">Создать аккаунт</string>
+    <string name="btn_title_log_in_email">У меня уже есть аккаунт</string>
+    <string name="txt_btn_title_the_user_has_an_account">У меня уже есть аккаунт</string>
+    <string name="privacy_and_terms_agreement">Регистрируясь и используя приложение вы соглашаетесь с Пользовательским соглашением. И подтверждаете что прочитали нашу Политику конфиденциальности.</string>
+    <string name="txt_title_privacy">Политика конфиденциальности</string>
+    <string name="txt_content_privacy">Политика конфиденциальности контент</string>
+    <string name="txt_title_teams_of_use">Пользовательское соглашение</string>
+    <string name="txt_content_teams_of_use">Пользовательское соглашение контент</string>
+
+    <!-- SIGN  UP -->
+    <string name="toolbar_scr_sign_up_username">Как тебя зовут?</string>
+    <string name="hint_ed_txt_sign_up_username">Введи своё имя</string>
+    <string name="hint_sign_up_username">Имя будет видно в профиле. Ты всегда можешь его изменить.</string>
+    <string name="toolbar_scr_sign_up_user_age">Когда у тебя день рождения?</string>
+    <!--Phone-->
+    <string name="toolbar_scr_sign_up_phone">Введи номер телефона</string>
+    <string name="img_def_country_code_flag">🇷🇺</string>
+    <string name="hint_phone">Номер телефона</string>
+    <string name="btn_caption_email_sign_up">Зарегистироваться при помощи эл. адреса</string>
+    <string name="caption_sms_info">В зависимости от вашего оператора связи, может взиматься плата за получение SMS.</string>
+</resources>

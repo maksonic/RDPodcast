@@ -1,6 +1,8 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    hilt()
+    kapt()
 }
 
 android {
@@ -17,8 +19,8 @@ android {
             isMinifyEnabled = true
 
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -35,4 +37,11 @@ android {
 }
 
 dependencies {
+    implementation(project(Module.CORE))
+    implementation(project(Shared.UI_RES))
+    implementation(project(Navigation.API))
+    implementation(Lib.AndroidX.appCompat)
+    implementation(Lib.AndroidX.material)
+    implementation(Lib.Dagger.hilt)
+    kapt(Lib.Dagger.hiltCompiler)
 }

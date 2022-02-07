@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
-      <!--  <item name="backgroundTint">@color/color_on_primary</item>
+        <item name="backgroundTint">@color/color_on_primary</item>
         <item name="itemTextColor">@drawable/bottom_nav_item_color</item>
         <item name="itemIconTint">@drawable/bottom_nav_item_color</item>
         <item name="labelVisibilityMode">labeled</item>
-        <item name="fontFamily">@font/roboto</item>-->
+        <item name="fontFamily">@font/roboto</item>
         <item name="itemHorizontalTranslationEnabled">false</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">4%</item>
+    </style>
+
+    <style name="Btn.Player.RDTheme" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:scaleType">centerCrop</item>
     </style>
 </resources>
