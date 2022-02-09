@@ -4,7 +4,7 @@
 object BuildPlugin {
 
     object GoogleServices {
-        private const val version = "4.3.10"
+        private const val version = "4.3.3"
         const val init = "com.google.gms:google-services:$version"
     }
 

@@ -1,6 +1,7 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    parcelize()
 }
 
 android {

@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mainScreen"
+        android:id="@+id/main_graph"
         android:icon="@drawable/ic_main_screen"
         android:title="@string/scr_title_main" />
 
     <item
-        android:id="@+id/categoriesScreen"
+        android:id="@+id/categories_graph"
         android:icon="@drawable/ic_category_screen"
         android:title="@string/scr_title_categories" />
 
 
     <item
-        android:id="@+id/collectionsScreen"
+        android:id="@+id/collection_graph"
         android:icon="@drawable/ic_collections_screen"
         android:title="@string/scr_title_collection" />
 

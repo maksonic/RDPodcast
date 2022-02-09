@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/global_graph.xml"
-    app:startDestination="@id/mainScreen">
+    app:startDestination="@id/main_graph">
     <dialog
         android:id="@+id/onboardingScreen"
         android:name="ru.maksonic.rdpodcast.screen.onboarding.OnboardingScreen"
@@ -12,20 +12,17 @@
             app:destination="@id/auth_graph" />
     </dialog>
 
-    <fragment
-        android:id="@+id/mainScreen"
-        android:name="ru.maksonic.rdpodcast.screen.main.MainScreen"
-        android:label="MainScreen" />
-    <fragment
-        android:id="@+id/categoriesScreen"
-        android:name="ru.maksonic.rdpodcast.screen.categories.CategoriesScreen"
-        android:label="CategoriesScreen" />
-    <fragment
-        android:id="@+id/collectionsScreen"
-        android:name="ru.maksonic.rdpodcast.screen.collections.CollectionsScreen"
-        android:label="CollectionsScreen" />
-
     <include
+        android:id="@+id/main_graph"
+        app:graph="@navigation/main_graph" />
+   <include
+        android:id="@+id/categories_graph"
+        app:graph="@navigation/categories_graph" />
+   <include
+        android:id="@+id/collection_graph"
+        app:graph="@navigation/collection_graph" />
+   <include
         android:id="@+id/auth_graph"
         app:graph="@navigation/auth_graph" />
+
 </navigation>

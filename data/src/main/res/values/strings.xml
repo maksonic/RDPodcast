@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- FETCHING CATEGORIES-->
+    <string name="error_fetch_categories">Ничего не найдено. Повторите попытку.</string>
+    <string name="error_net_timeout">"Превышено время ожидания от сервера…\nПроверь интернет соединение!"</string>
+    <string name="error_empty_categories_list">Не удалось загрузить новые данные.\nВозможно отсутствует интернет соединение.</string>
+</resources>

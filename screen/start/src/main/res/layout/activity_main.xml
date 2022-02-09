@@ -18,8 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/main"
-            app:navigationIcon="@drawable/ic_user_profile"
-            app:title="Text" />
+            app:navigationIcon="@drawable/ic_user_profile" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView

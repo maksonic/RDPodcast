@@ -5,7 +5,7 @@ package ru.maksonic.rdpodcast.core.base
  */
 abstract class Abstract {
 
-    interface Object<T, M : Mapper> {
+    interface Object<T, M : Mappers> {
 
         fun map(mapper: M): T
     }
@@ -14,9 +14,9 @@ abstract class Abstract {
 
     interface CloudObject
 
-    interface Mapper {
+    interface Mappers {
 
-        interface Data<S, R> : Mapper {
+        interface Data<S, R> : Mappers {
             fun map(data: S): R
         }
 
@@ -28,6 +28,6 @@ abstract class Abstract {
             fun map(errorType: ErrorType): T
         }
 
-        class Empty : Mapper
+        class Empty : Mappers
     }
 }

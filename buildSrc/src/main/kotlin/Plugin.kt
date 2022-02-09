@@ -22,3 +22,6 @@ fun PluginDependenciesSpec.kotlinAndroid(): PluginDependencySpec =
 
 fun PluginDependenciesSpec.kapt(): PluginDependencySpec =
     id("kotlin-kapt")
+
+fun PluginDependenciesSpec.parcelize(): PluginDependencySpec =
+    id("kotlin-parcelize")

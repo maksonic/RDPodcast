@@ -2,6 +2,7 @@ package ru.maksonic.rdpodcast.navigation.api
 
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
+import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 import javax.inject.Inject
 
 /**
@@ -14,6 +15,8 @@ interface Router {
     fun authToPrivacy(data: Parcelable?)
     fun authToSignUpUsername()
     fun authToLogIn()
+    //Categories
+    fun toCategoryPodcastList(category: CategoryUi?)
 }
 
 class Navigator @Inject constructor(val fragment: Fragment) : Router {
@@ -36,6 +39,10 @@ class Navigator @Inject constructor(val fragment: Fragment) : Router {
 
     override fun authToSignUpUsername() {
        // fragment.navigate(R.id.action_authBottomSheetDialog_to_signUpUsernameScreen)
+    }
+
+    override fun toCategoryPodcastList(category: CategoryUi?) {
+        fragment.navigate(R.id.action_categoriesScreen_to_screenPodcastList, data = category)
     }
 
 }

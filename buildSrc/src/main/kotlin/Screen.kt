@@ -7,4 +7,5 @@ object Screen {
     const val START = ":screen:start"
     const val CATEGORIES = ":screen:categories"
     const val COLLECTIONS = ":screen:collections"
+    const val PODCAST_LIST = ":screen:podcast-list"
 }

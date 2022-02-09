@@ -9,10 +9,6 @@
         <item name="itemHorizontalTranslationEnabled">false</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
-        <item name="cornerSize">4%</item>
-    </style>
-
     <style name="Btn.Player.RDTheme" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
         <item name="android:focusable">true</item>

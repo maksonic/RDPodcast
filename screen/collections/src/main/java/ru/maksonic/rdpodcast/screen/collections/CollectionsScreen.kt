@@ -19,10 +19,10 @@ class CollectionsScreen : BaseFragment<ScreenCollectionsBinding>() {
         get() = ScreenCollectionsBinding::inflate
 
     override fun prepareView(savedInstanceState: Bundle?) {
-     //   initViewPager(this)
+        initViewPager(this)
     }
 
-   /* private fun initViewPager(fragment: Fragment) {
+    private fun initViewPager(fragment: Fragment) {
         with(binding) {
             viewPager.adapter = CollectionsPagerAdapter(fragment)
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -37,6 +37,6 @@ class CollectionsScreen : BaseFragment<ScreenCollectionsBinding>() {
             DOWNLOADS_PAGE_INDEX -> getString(R.string.tab_downloads)
             else -> null
         }
-    }*/
+    }
 }
 

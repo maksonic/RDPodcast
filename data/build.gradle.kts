@@ -1,6 +1,8 @@
 plugins {
     androidLibrary()
     kotlinAndroid()
+    hilt()
+    kapt()
 }
 
 android {
@@ -35,5 +37,17 @@ android {
 }
 
 dependencies {
-
+    implementation(project(Module.DOMAIN))
+    implementation(project(Module.CORE))
+    implementation(Lib.gson)
+    implementation(Lib.timber)
+    implementation(Lib.Firebase.firestore)
+    implementation(Lib.Firebase.googlePlay)
+    implementation(Lib.Dagger.hilt)
+    kapt(Lib.Dagger.hiltCompiler)
+    implementation(Lib.RoomDatabase.roomKtx)
+    implementation(Lib.RoomDatabase.roomRuntime)
+    kapt(Lib.RoomDatabase.annotationProcessor)
+    testImplementation(Lib.TestLibraries.junit)
+    androidTestImplementation(Lib.AndroidTestLibraries.junitExt)
 }

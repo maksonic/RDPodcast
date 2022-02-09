@@ -7,6 +7,23 @@
         motion:constraintSetStart="@id/start"
         motion:duration="100"
         motion:motionInterpolator="linear">
+        <KeyFrameSet>
+
+        <KeyAttribute
+            motion:framePosition="0"
+            android:translationY="0dp"
+            motion:motionTarget="@+id/bottomNavigation" />
+        <KeyAttribute
+            motion:framePosition="100"
+            android:translationY="@dimen/player_collapsed"
+            motion:motionTarget="@+id/bottomNavigation" />
+
+        <KeyAttribute
+            motion:framePosition="-100"
+            android:translationY="0dp"
+            motion:motionTarget="@+id/bottomNavigation" />
+        </KeyFrameSet>
+
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -21,8 +38,7 @@
             android:id="@+id/navGraphContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="?attr/actionBarSize"
-            motion:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/containerPlayer"
@@ -51,9 +67,8 @@
             android:id="@+id/navGraphContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="?attr/actionBarSize"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintBottom_toTopOf="@+id/bottomNavigation" />
+            motion:layout_constraintBottom_toBottomOf="parent" />
         <Constraint
             android:id="@+id/containerPlayer"
             android:layout_width="match_parent"
@@ -63,7 +78,7 @@
             android:id="@+id/bottomNavigation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toBottomOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>

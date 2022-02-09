@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import ru.maksonic.rdpodcast.core.R
 
 
 /**
@@ -33,6 +36,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
     abstract fun prepareView(savedInstanceState: Bundle?)
+
+
+    fun backPressed() {}
 
     override fun onDestroyView() {
         _binding = null

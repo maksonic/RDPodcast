@@ -38,9 +38,17 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(project(Module.DOMAIN))
     implementation(project(Navigation.API))
+    implementation(Lib.Navigation.fragment)
+    implementation(project(Shared.UI_RES))
+    implementation(project(Shared.UI_MODEL))
     implementation(Lib.AndroidX.appCompat)
     implementation(Lib.AndroidX.material)
+    implementation(Lib.Lifecycle.runtimeKtx)
+    implementation(Lib.AndroidX.swipeRefreshLayout)
+   // implementation(Lib.coil)
+    implementation(Lib.glide)
     implementation(Lib.Dagger.hilt)
     kapt(Lib.Dagger.hiltCompiler)
 }

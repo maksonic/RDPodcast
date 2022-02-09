@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/categories_graph"
+    app:startDestination="@id/categoriesScreen">
+    <fragment
+        android:id="@+id/categoriesScreen"
+        android:name="ru.maksonic.rdpodcast.screen.categories.CategoriesScreen"
+        android:label="CategoriesScreen" >
+        <action
+            android:id="@+id/action_categoriesScreen_to_screenPodcastList"
+            app:destination="@id/screenPodcastList"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/screenPodcastList"
+        android:name="ru.maksonic.rdpodcast.screen.podcast_list.ScreenPodcastList"
+        android:label="ScreenPodcastList" />
+</navigation>

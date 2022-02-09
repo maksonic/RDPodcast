@@ -5,7 +5,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <ru.maksonic.rdpodcast.shared.ui_resources.ToolbarDisplay
+    <ru.maksonic.rdpodcast.shared.ui_resources.toolbar.ToolbarDisplay
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

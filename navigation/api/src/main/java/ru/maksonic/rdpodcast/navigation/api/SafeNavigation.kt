@@ -25,16 +25,6 @@ fun Fragment.navigate(actionId: Int, hostId: Int? = null, data: Parcelable? = nu
         navController.navigate(actionId, bundle)
     }
 }
-fun NavController.navi(actionId: Int, hostId: Int? = null, data: Parcelable? = null) {
-
-    val bundle = Bundle().apply { putParcelable(PASSED_DATA, data) }
-    val action = this.currentDestination?.getAction(actionId)
-
-    if (action != null && this.currentDestination?.id != action.destinationId) {
-        this.navigate(actionId, bundle)
-    }
-}
-
 val Fragment.navigationData: Parcelable?
     get() = arguments?.getParcelable(PASSED_DATA)
 

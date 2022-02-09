@@ -26,6 +26,7 @@
     <dimen name="btn_primary">62dp</dimen>
     <dimen name="btn_secondary">62dp</dimen>
     <dimen name="player_collapsed">72dp</dimen>
+    <dimen name="nav_container_margin_bottom">128dp</dimen>
 
     <dimen name="input_field_height">56dp</dimen>
     <dimen name="txt_ultra_small_12sp">12sp</dimen>

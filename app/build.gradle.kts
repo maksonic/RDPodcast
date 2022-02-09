@@ -58,6 +58,7 @@ dependencies {
     implementation(project(Screen.START))
     implementation(project(Screen.CATEGORIES))
     implementation(project(Screen.COLLECTIONS))
+    implementation(project(Screen.PODCAST_LIST))
 
     implementation(Lib.Emoji.emoji2)
     implementation(Lib.Emoji.bundled)
