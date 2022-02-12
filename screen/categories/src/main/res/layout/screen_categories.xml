@@ -13,6 +13,7 @@
         style="@style/AppBarLayout.RDTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="@dimen/elevation_2dp"
         app:layout_constraintTop_toTopOf="parent"
         app:liftOnScroll="true">
 

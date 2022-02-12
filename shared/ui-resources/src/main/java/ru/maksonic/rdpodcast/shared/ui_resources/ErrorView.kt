@@ -40,7 +40,7 @@ class ErrorView @JvmOverloads constructor(
         hide()
         with(binding) {
             root.apply {
-                setBackgroundColor(context.getColor(R.color.transparent))
+                setBackgroundColor(context.getColor(R.color.background))
                 isClickable = true
                 isFocusable = true
             }

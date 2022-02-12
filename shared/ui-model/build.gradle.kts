@@ -2,6 +2,8 @@ plugins {
     androidLibrary()
     kotlinAndroid()
     parcelize()
+    hilt()
+    kapt()
 }
 
 android {
@@ -37,5 +39,7 @@ android {
 
 dependencies {
     implementation(Lib.Navigation.fragment)
+    implementation(Lib.Dagger.hilt)
+    kapt(Lib.Dagger.hiltCompiler)
 
 }

@@ -19,8 +19,6 @@ class MainScreen : BaseFragment<ScreenMainBinding>() {
     @Inject
     lateinit var navigator: Navigator
     override fun prepareView(savedInstanceState: Bundle?) {
-        navigator = Navigator(this)
-
         navigator.showOnboarding()
     }
 }

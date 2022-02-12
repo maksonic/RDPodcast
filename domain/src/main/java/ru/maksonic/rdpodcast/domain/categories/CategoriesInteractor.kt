@@ -1,4 +1,4 @@
-package ru.maksonic.rdpodcast.domain
+package ru.maksonic.rdpodcast.domain.categories
 
 import javax.inject.Inject
 

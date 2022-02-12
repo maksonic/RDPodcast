@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
             viewModel.userAuthState(navController)
         }
     }
+
     /**
      * @property [shownPlayerPadding] is used for the bottom padding of the nav container
      * and for the peekHeight of bottom sheet behavior.
@@ -104,16 +105,20 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_EXPANDED -> {
-                        binding.mainScreen.transitionToEnd()
+                        with(binding) {
+                            mainScreen.transitionToEnd()
+                            playerBottomSheet.bottomSheet.transitionToEnd()
+                        }
                     }
                     BottomSheetBehavior.STATE_COLLAPSED -> {
-                        binding.mainScreen.transitionToStart()
-                        binding.navGraphContainer.setPadding(0, 0, 0, shownPlayerPadding)
-
+                        with(binding) {
+                            mainScreen.transitionToStart()
+                            playerBottomSheet.bottomSheet.transitionToStart()
+                            navGraphContainer.setPadding(0, 0, 0, shownPlayerPadding)
+                        }
                     }
 
                     BottomSheetBehavior.STATE_HIDDEN -> {
-
                     }
                 }
             }
@@ -121,9 +126,9 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 with(binding) {
                     mainScreen.progress = slideOffset
-                    binding.playerBottomSheet.bottomSheet.progress = slideOffset
+                    playerBottomSheet.bottomSheet.progress = slideOffset
                     if (slideOffset < 0) {
-                        binding.navGraphContainer.setPadding(0, 0, 0, hiddenPlayerPadding)
+                        navGraphContainer.setPadding(0, 0, 0, hiddenPlayerPadding)
                     }
                 }
             }

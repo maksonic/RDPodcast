@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation(project(Shared.UI_MODEL))
     implementation(project(Navigation.API))
     implementation(project(Screen.ONBOARDING))
     implementation(project(Screen.MAIN))

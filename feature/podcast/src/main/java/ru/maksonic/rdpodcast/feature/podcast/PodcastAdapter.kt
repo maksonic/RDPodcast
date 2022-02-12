@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import ru.maksonic.rdpodcast.core.base.presentation.BaseRecyclerAdapter
 import ru.maksonic.rdpodcast.core.base.presentation.BaseViewHolder
 import ru.maksonic.rdpodcast.core.ui.click
@@ -72,6 +73,7 @@ class PodcastAdapter(
                     .load(podcast.image)
                     .placeholder(R.drawable.podcast_image)
                     .error(R.drawable.podcast_image)
+                    .apply(RequestOptions().override(100, 100))
                     .into(imgPodcast)
             }
         }
@@ -94,6 +96,7 @@ class PodcastAdapter(
             )
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PodcastViewHolder {
         return PodcastViewHolder(

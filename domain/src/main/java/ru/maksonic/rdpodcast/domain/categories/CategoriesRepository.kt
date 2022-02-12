@@ -1,4 +1,4 @@
-package ru.maksonic.rdpodcast.domain
+package ru.maksonic.rdpodcast.domain.categories
 
 import ru.maksonic.rdpodcast.core.Result
 
@@ -8,6 +8,7 @@ import ru.maksonic.rdpodcast.core.Result
 typealias Categories = Result<List<CategoryDomain>>
 
 interface CategoriesRepository {
+    val tag: String
     suspend fun fetchCacheOrCloudCategories(): Categories
     suspend fun fetchCloudCategories(): Categories
 }

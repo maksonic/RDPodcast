@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
@@ -33,12 +32,16 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prepareView(savedInstanceState)
+        toolbarBackPressed()
     }
 
     abstract fun prepareView(savedInstanceState: Bundle?)
 
 
-    fun backPressed() {}
+    private fun toolbarBackPressed() {
+        view?.findViewById<Toolbar>(R.id.toolBar)
+            ?.setNavigationOnClickListener { requireActivity().onBackPressed() }
+    }
 
     override fun onDestroyView() {
         _binding = null

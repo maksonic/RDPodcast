@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ru.maksonic.rdpodcast.navigation.api.Router
 
 /**
  * @Author: maksonic on 06.02.2022
@@ -14,5 +15,5 @@ import dagger.hilt.components.SingletonComponent
 object NavigationModule {
 
     @Provides
-    fun provideNavigation(fragment: Fragment): Router = Navigator(fragment)
+    fun provideNavigation(fragment: Fragment): Router = Router.Base(fragment)
 }

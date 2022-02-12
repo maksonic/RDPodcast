@@ -3,16 +3,14 @@ package ru.maksonic.rdpodcast.screen.categories
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import ru.maksonic.rdpodcast.core.base.presentation.BaseFragment
-import ru.maksonic.rdpodcast.core.ui.Player
 import ru.maksonic.rdpodcast.navigation.api.Navigator
 import ru.maksonic.rdpodcast.screen.categories.adapter.CategoryAdapter
 import ru.maksonic.rdpodcast.screen.categories.databinding.ScreenCategoriesBinding
@@ -24,7 +22,7 @@ import javax.inject.Inject
  * @Author: maksonic on 06.02.2022
  */
 @AndroidEntryPoint
-class CategoriesScreen @Inject constructor() : BaseFragment<ScreenCategoriesBinding>(),
+class CategoriesScreen : BaseFragment<ScreenCategoriesBinding>(),
     CategoriesFeature.Render {
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> ScreenCategoriesBinding
@@ -39,8 +37,6 @@ class CategoriesScreen @Inject constructor() : BaseFragment<ScreenCategoriesBind
         get() = _adapter!!
 
     override fun prepareView(savedInstanceState: Bundle?) {
-
-        navigator = Navigator(this)
         initRecyclerAdapter()
         initSwipeRefreshLayout()
         lifecycleScope.launch {
@@ -52,7 +48,7 @@ class CategoriesScreen @Inject constructor() : BaseFragment<ScreenCategoriesBind
 
     override fun initRecyclerAdapter() {
         _adapter = CategoryAdapter { category ->
-            navigator.toCategoryPodcastList(category)
+            viewModel.dispatch(CategoriesFeature.Msg.Ui.OnCategoryClicked(navigator, category))
         }
         binding.categoriesRecyclerView.adapter = adapter
     }
@@ -68,9 +64,7 @@ class CategoriesScreen @Inject constructor() : BaseFragment<ScreenCategoriesBind
     }
 
     override fun renderLoadingState(state: CategoriesFeature.State.Loading) {
-        with(binding) {
-            loadingViewState.show()
-        }
+        binding.loadingViewState.show()
     }
 
     override fun renderFetchedState(state: CategoriesFeature.State.Fetched) {
@@ -108,16 +102,13 @@ class CategoriesScreen @Inject constructor() : BaseFragment<ScreenCategoriesBind
             }
             appBarLayout.setExpanded(true)
             categoriesRecyclerView.gone(false)
-
         }
     }
 
-    private fun initSwipeRefreshLayout() {
-        with(binding) {
-            swipeRefreshLayout.setOnRefreshListener {
-                lifecycleScope.launch {
-                    viewModel.dispatch(CategoriesFeature.Msg.Ui.RefreshCategories)
-                }
+    override fun initSwipeRefreshLayout() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            lifecycleScope.launch {
+                viewModel.dispatch(CategoriesFeature.Msg.Ui.RefreshCategories)
             }
         }
     }

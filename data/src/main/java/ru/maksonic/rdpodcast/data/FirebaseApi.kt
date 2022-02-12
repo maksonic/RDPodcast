@@ -11,9 +11,17 @@ interface FirebaseApi {
 
     val firestoreInstance: FirebaseFirestore
     val categoriesCollection: CollectionReference
+    val podcastCollection: String
 
     class Base : FirebaseApi {
         override val firestoreInstance = FirebaseFirestore.getInstance()
         override val categoriesCollection = firestoreInstance.collection(CATEGORIES)
+
+        override val podcastCollection = PODCAST_LIST
+
+        private companion object {
+            private const val CATEGORIES = "categories"
+            private const val PODCAST_LIST = "podcast_list"
+        }
     }
 }

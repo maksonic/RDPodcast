@@ -53,6 +53,14 @@
         <item name="textAllCaps">false</item>
     </style>
 
+ <style name="TextView.Header.RDTheme" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="maxLines">2</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="TextView.Caption.RDTheme" parent="Widget.MaterialComponents.TextView">
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/color_secondary</item>

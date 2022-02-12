@@ -9,7 +9,11 @@ import ru.maksonic.rdpodcast.data.categories.CategoriesRepositoryImpl
 import ru.maksonic.rdpodcast.data.categories.CategoryDataToDomainMapper
 import ru.maksonic.rdpodcast.data.categories.cache.CategoriesCacheDataSource
 import ru.maksonic.rdpodcast.data.categories.cloud.CategoriesCloudDataSource
-import ru.maksonic.rdpodcast.domain.CategoriesRepository
+import ru.maksonic.rdpodcast.data.podcast.PodcastCloudDataSource
+import ru.maksonic.rdpodcast.data.podcast.PodcastDataToDomainMapper
+import ru.maksonic.rdpodcast.data.podcast.PodcastRepositoryImpl
+import ru.maksonic.rdpodcast.domain.categories.CategoriesRepository
+import ru.maksonic.rdpodcast.domain.podcast.PodcastRepository
 
 /**
  * @Author: maksonic on 24.11.2021
@@ -27,4 +31,10 @@ object DataModule {
         cache: CategoriesCacheDataSource,
         mapper: CategoryDataToDomainMapper,
     ): CategoriesRepository = CategoriesRepositoryImpl(cloud, cache, mapper)
+
+    @Provides
+    fun providePodcastRepository(
+        cloud: PodcastCloudDataSource,
+        mapper: PodcastDataToDomainMapper,
+    ): PodcastRepository = PodcastRepositoryImpl(cloud, mapper)
 }

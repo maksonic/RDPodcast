@@ -11,6 +11,7 @@ class CategoryCacheToDataMapper @Inject constructor() : Mapper<CategoryCache, Ca
 
     override fun from(i: CategoryCache?) = CategoryData(
         id = i!!.id,
+        categoryId = i.categoryId,
         name = i.name,
         description = i.description,
         image = i.image
@@ -18,6 +19,7 @@ class CategoryCacheToDataMapper @Inject constructor() : Mapper<CategoryCache, Ca
 
     override fun to(o: CategoryData?) = CategoryCache(
         id = o!!.id!!,
+        categoryId = o.categoryId,
         name = o.name,
         description = o.description,
         image = o.image

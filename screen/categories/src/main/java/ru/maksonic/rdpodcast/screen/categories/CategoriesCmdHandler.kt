@@ -2,7 +2,9 @@ package ru.maksonic.rdpodcast.screen.categories
 
 import ru.maksonic.rdpodcast.core.base.presentation.architecture.CommandHandler
 import ru.maksonic.rdpodcast.core.Result
-import ru.maksonic.rdpodcast.domain.CategoriesInteractor
+import ru.maksonic.rdpodcast.domain.categories.CategoriesInteractor
+import ru.maksonic.rdpodcast.navigation.api.Navigator
+import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 import javax.inject.Inject
 
 /**
@@ -20,7 +22,9 @@ class CategoriesCmdHandler @Inject constructor(
         when (cmd) {
             is CategoriesFeature.Cmd.FetchCacheOrCloudCategories -> fetchCategories(consumer)
             is CategoriesFeature.Cmd.FetchCloudCategories -> refreshCategories(consumer)
-            is CategoriesFeature.Cmd.NavigateToPodcastList -> navigateToPodcastList(consumer)
+            is CategoriesFeature.Cmd.NavigateToPodcastList -> {
+                navigateToPodcastList(cmd.navigator, cmd.category)
+            }
         }
     }
 
@@ -48,7 +52,7 @@ class CategoriesCmdHandler @Inject constructor(
         )
     }
 
-    private fun navigateToPodcastList(consumer: (CategoriesFeature.Msg) -> Unit
-    ) {
+    private fun navigateToPodcastList(navigator: Navigator, category: CategoryUi?) {
+        navigator.toCategoryPodcastList(category)
     }
 }

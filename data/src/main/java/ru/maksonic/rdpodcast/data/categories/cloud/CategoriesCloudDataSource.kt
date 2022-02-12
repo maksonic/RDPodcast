@@ -20,37 +20,38 @@ import javax.inject.Inject
  * @Author: maksonic on 07.02.2022
  */
 interface CategoriesCloudDataSource {
+    val tag: String?
     suspend fun getCloudCategories(): CategoriesData
 
     @ExperimentalCoroutinesApi
     class Base @Inject constructor(
         private val firebaseApi: FirebaseApi,
-        private val resourceProvider: ResourceProvider,
+        private val resProvider: ResourceProvider,
         @IoDispatcher private val dispatcher: CoroutineDispatcher,
     ) : CategoriesCloudDataSource {
-        companion object {
-            const val TAG = "CategoriesCloudDataSource"
-        }
+        override val tag = this::class.simpleName.toString()
 
         override suspend fun getCloudCategories(): CategoriesData = withContext(dispatcher) {
-            Timber.tag(TAG).i("FETCH FROM CLOUD")
+            Timber.tag(tag).i(resProvider.getString(R.string.log_start_fetching_from_cloud))
             try {
                 val response =
                     firebaseApi.categoriesCollection.orderBy("id").get(Source.SERVER).await()
-                if (response.isEmpty) {
-                    Timber.tag(TAG).e("|-| Empty Fetched list ${response.count()}")
-                    Result.Error(resourceProvider.getString(R.string.error_empty_categories_list))
-                } else {
-                    Timber.tag(TAG).d("|+| Fetched ${response?.count()} categories")
-                    val categories = response.toObjects(CategoryData::class.java).toList()
-                    Result.Success(categories)
-                }
+                val categoriesList = response.toObjects(CategoryData::class.java).toList()
+                Timber.tag(tag).d(
+                    resProvider.getString(R.string.log_success_fetching_from_cloud,
+                        categoriesList.size)
+                )
+                Result.Success(categoriesList)
             } catch (e: Exception) {
                 if (e.localizedMessage.contains(FAILED_TO_GET_DOC)) {
-                    Timber.tag(TAG).e("|-| $FAILED_TO_GET_DOC")
-                    Result.Error(resourceProvider.getString(R.string.error_empty_categories_list))
+                    Timber.tag(tag).e(resProvider.getString(R.string.log_error_fetching_from_cloud,
+                            e.localizedMessage)
+                    )
+                    Result.Error(resProvider.getString(R.string.error_empty_data_cloud_list))
                 } else {
-                    Timber.tag(TAG).e("|-| ${e.localizedMessage}")
+                    Timber.tag(tag).e(resProvider.getString(R.string.log_error_fetching_from_cloud,
+                            e.localizedMessage)
+                    )
                     Result.Error(e.localizedMessage)
                 }
             }

@@ -46,6 +46,7 @@ dependencies {
     implementation(project(Shared.UI_MODEL))
     implementation(Lib.AndroidX.appCompat)
     implementation(Lib.AndroidX.material)
+    implementation(Lib.glide)
     implementation(Lib.Lifecycle.runtimeKtx)
     implementation(Lib.AndroidX.swipeRefreshLayout)
     implementation(Lib.Dagger.hilt)

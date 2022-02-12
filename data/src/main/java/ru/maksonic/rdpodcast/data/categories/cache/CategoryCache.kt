@@ -11,6 +11,7 @@ import ru.maksonic.rdpodcast.data.DbCollection.CATEGORIES
 data class CategoryCache(
     @PrimaryKey
     val id: Long,
+    val categoryId: String? = null,
     val name: String? = null,
     val description: String? = null,
     val image: String? = null,

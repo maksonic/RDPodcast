@@ -10,6 +10,7 @@ import ru.maksonic.rdpodcast.core.ResourceProvider
 import ru.maksonic.rdpodcast.core.di.IoDispatcher
 import ru.maksonic.rdpodcast.data.FirebaseApi
 import ru.maksonic.rdpodcast.data.categories.cloud.CategoriesCloudDataSource
+import ru.maksonic.rdpodcast.data.podcast.PodcastCloudDataSource
 import javax.inject.Singleton
 
 /**
@@ -31,5 +32,14 @@ object CloudModule {
         @IoDispatcher dispatcher: CoroutineDispatcher,
     ): CategoriesCloudDataSource =
         CategoriesCloudDataSource.Base(api, provider, dispatcher)
+
+    @ExperimentalCoroutinesApi
+    @Provides
+    fun providePodcastCloudDataSource(
+        api: FirebaseApi,
+        provider: ResourceProvider,
+        @IoDispatcher dispatcher: CoroutineDispatcher,
+    ): PodcastCloudDataSource =
+        PodcastCloudDataSource.Base(api, provider, dispatcher)
 
 }

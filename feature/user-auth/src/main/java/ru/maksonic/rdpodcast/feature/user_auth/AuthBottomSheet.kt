@@ -30,7 +30,6 @@ class AuthBottomSheetDialog : BaseBottomSheetDialog<BottomSheetAuthBinding>() {
     lateinit var navigator: Navigator
 
     override fun prepareView(savedInstanceState: Bundle?) {
-        navigator = Navigator(this)
         setClickablePrivacyAndTermsString()
         initClicks()
     }

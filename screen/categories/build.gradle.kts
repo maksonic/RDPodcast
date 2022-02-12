@@ -47,7 +47,6 @@ dependencies {
     implementation(Lib.AndroidX.material)
     implementation(Lib.Lifecycle.runtimeKtx)
     implementation(Lib.AndroidX.swipeRefreshLayout)
-   // implementation(Lib.coil)
     implementation(Lib.glide)
     implementation(Lib.Dagger.hilt)
     kapt(Lib.Dagger.hiltCompiler)

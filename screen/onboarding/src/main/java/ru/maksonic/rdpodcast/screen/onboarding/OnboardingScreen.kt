@@ -31,7 +31,6 @@ class OnboardingScreen : BaseFullScreenBottomSheetDialog<ScreenOnboardingBinding
     }
 
     override fun prepareView(savedInstanceState: Bundle?) {
-        navigator = Navigator(this)
         with(binding) {
             btnSkipOnboarding.setOnClickListener(clickListener)
             btnShowAuthBottomSheet.setOnClickListener(clickListener)

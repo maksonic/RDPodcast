@@ -1,5 +1,6 @@
 package ru.maksonic.rdpodcast.screen.categories
 
+import ru.maksonic.rdpodcast.navigation.api.Navigator
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 
 /**
@@ -9,6 +10,7 @@ object CategoriesFeature {
 
     interface Render {
         fun initRecyclerAdapter()
+        fun initSwipeRefreshLayout()
         fun render(state: State)
         fun renderLoadingState(state: State.Loading)
         fun renderFetchedState(state: State.Fetched)
@@ -29,7 +31,7 @@ object CategoriesFeature {
         sealed class Ui : Msg() {
             object FetchCategories : Ui()
             object RefreshCategories : Ui()
-            object OnCategoryClicked : Ui()
+            data class OnCategoryClicked(val navigator: Navigator, val category: CategoryUi?) : Ui()
         }
 
         sealed class Internal : Msg() {
@@ -42,6 +44,9 @@ object CategoriesFeature {
     sealed class Cmd {
         object FetchCacheOrCloudCategories : Cmd()
         object FetchCloudCategories : Cmd()
-        object NavigateToPodcastList : Cmd()
+        data class NavigateToPodcastList(
+            val navigator: Navigator,
+            val category: CategoryUi?
+        ) : Cmd()
     }
 }
