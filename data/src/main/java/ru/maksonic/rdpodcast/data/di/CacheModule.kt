@@ -9,9 +9,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import ru.maksonic.rdpodcast.core.ResourceProvider
+import ru.maksonic.rdpodcast.core.data.BaseCacheDataSource
 import ru.maksonic.rdpodcast.core.di.IoDispatcher
 import ru.maksonic.rdpodcast.data.RdDatabase
+import ru.maksonic.rdpodcast.data.categories.CategoryData
 import ru.maksonic.rdpodcast.data.categories.cache.CategoriesCacheDataSource
+import ru.maksonic.rdpodcast.data.categories.cache.CategoryCache
 import ru.maksonic.rdpodcast.data.categories.cache.CategoryCacheToDataMapper
 import ru.maksonic.rdpodcast.data.categories.cache.CategoryDao
 import javax.inject.Singleton
@@ -39,5 +42,6 @@ object CacheModule {
         mapper: CategoryCacheToDataMapper,
         provider: ResourceProvider,
         @IoDispatcher dispatcher: CoroutineDispatcher,
-    ): CategoriesCacheDataSource = CategoriesCacheDataSource.Base(dao, mapper, provider, dispatcher)
+    ): BaseCacheDataSource<CategoryCache, CategoryData> =
+        CategoriesCacheDataSource(dao, mapper, provider, dispatcher)
 }

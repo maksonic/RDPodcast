@@ -1,28 +1,20 @@
 package ru.maksonic.rdpodcast.feature.podcast
 
-import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import ru.maksonic.rdpodcast.core.base.presentation.BaseRecyclerAdapter
-import ru.maksonic.rdpodcast.core.base.presentation.BaseViewHolder
 import ru.maksonic.rdpodcast.core.ui.click
 import ru.maksonic.rdpodcast.feature.podcast.databinding.ItemPodcastBinding
-import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
 
 /**
  * @Author: maksonic on 09.02.2022
  */
-
-
 class PodcastAdapter(
     private val onClick: (PodcastUi?) -> Unit,
     private val onMoreClick: (PodcastUi?) -> Unit
@@ -80,23 +72,14 @@ class PodcastAdapter(
 
         private fun setSelectedItemBackgroundColor() {
             binding.podcastItem.setBackgroundColor(
-                ContextCompat.getColor(
-                    binding.podcastItem.context,
-                    R.color.color_secondary_variant
-                )
+                ContextCompat.getColor(binding.podcastItem.context, R.color.color_secondary_variant)
             )
-
         }
         private fun setUnSelectedItemBackgroundColor() {
-            binding.podcastItem.setBackgroundColor(
-                ContextCompat.getColor(
-                    binding.podcastItem.context,
-                    R.color.background
-                )
-            )
+            binding.podcastItem.setBackgroundColor(ContextCompat.getColor(
+                binding.podcastItem.context, R.color.background))
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PodcastViewHolder {
         return PodcastViewHolder(
@@ -109,7 +92,6 @@ class PodcastAdapter(
         val podcast = getItem(position)
         holder.bind(podcast)
     }
-
 }
 
 class PodcastItemDiffUtil : DiffUtil.ItemCallback<PodcastUi>() {
@@ -120,5 +102,4 @@ class PodcastItemDiffUtil : DiffUtil.ItemCallback<PodcastUi>() {
     override fun areContentsTheSame(oldItem: PodcastUi, newItem: PodcastUi): Boolean {
         return oldItem == newItem
     }
-
 }

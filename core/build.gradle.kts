@@ -38,8 +38,11 @@ android {
 
 dependencies {
     implementation(Lib.AndroidX.material)
+    implementation(Lib.Firebase.firestore)
     implementation(Lib.Navigation.fragment)
+    implementation(Lib.RoomDatabase.roomKtx)
     implementation(Lib.Dagger.hilt)
+    implementation(Lib.timber)
     kapt(Lib.Dagger.hiltCompiler)
 
 }

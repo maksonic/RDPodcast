@@ -8,9 +8,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.maksonic.rdpodcast.core.base.presentation.BaseFragment
+import ru.maksonic.rdpodcast.core.base.presentation.Delay
 import ru.maksonic.rdpodcast.navigation.api.Navigator
 import ru.maksonic.rdpodcast.screen.categories.adapter.CategoryAdapter
 import ru.maksonic.rdpodcast.screen.categories.databinding.ScreenCategoriesBinding
@@ -34,7 +36,7 @@ class CategoriesScreen : BaseFragment<ScreenCategoriesBinding>(),
     lateinit var navigator: Navigator
     private var _adapter: CategoryAdapter? = null
     private val adapter: CategoryAdapter
-        get() = _adapter!!
+        get() = requireNotNull(_adapter)
 
     override fun prepareView(savedInstanceState: Bundle?) {
         initRecyclerAdapter()
@@ -95,19 +97,20 @@ class CategoriesScreen : BaseFragment<ScreenCategoriesBinding>(),
         with(binding) {
             loadingViewState.hide()
             swipeRefreshLayout.isRefreshing = false
-            errorState.show()
-            errorState.setErrorMessage(state.message)
-            errorState.acceptPressed {
-                viewModel.dispatch(CategoriesFeature.Msg.Ui.FetchCategories)
-            }
-            appBarLayout.setExpanded(true)
             categoriesRecyclerView.gone(false)
+            appBarLayout.setExpanded(true)
+            errorState.apply {
+                show()
+                setErrorMessage(state.message)
+                acceptPressed { viewModel.dispatch(CategoriesFeature.Msg.Ui.FetchCategories) }
+            }
         }
     }
 
     override fun initSwipeRefreshLayout() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             lifecycleScope.launch {
+                delay(Delay.baseRequestDelay)
                 viewModel.dispatch(CategoriesFeature.Msg.Ui.RefreshCategories)
             }
         }

@@ -17,14 +17,9 @@ class PodcastListViewModel @Inject constructor(
 ) : FeatureHolder<PodcastListFeature.Msg, PodcastListFeature.State, PodcastListFeature.Cmd>(
     initState = PodcastListFeature.State.Loading,
     initCommands = emptySet(),
-    PodcastListFeature.Cmd::class to PodcastsCmdHandler(
-        interactor,
-        mapper,
-    )
-) {
-    override fun update(
-        msg: PodcastListFeature.Msg,
-        state: PodcastListFeature.State
+    PodcastListFeature.Cmd::class to PodcastsCmdHandler(interactor, mapper)) {
+
+    override fun update(msg: PodcastListFeature.Msg, state: PodcastListFeature.State
     ): UpdateResult = when (msg) {
         is PodcastListFeature.Msg.Ui.FetchPodcasts -> PodcastListFeature.State.Loading to setOf(
             PodcastListFeature.Cmd.OnFetchCloudPodcast(msg.category)
@@ -33,31 +28,17 @@ class PodcastListViewModel @Inject constructor(
             PodcastListFeature.Cmd.OnFetchCloudPodcast(msg.category)
         )
         is PodcastListFeature.Msg.Internal.FetchingResult -> {
-            PodcastListFeature.State.Fetched(
-                fetchedPodcasts = msg.podcasts
+            PodcastListFeature.State.Fetched(fetchedPodcasts = msg.podcasts, msg.podcastCount
             ) to emptySet()
         }
-        is PodcastListFeature.Msg.Ui.InitScreenHeader ->
-            PodcastListFeature.State.ScreenHeader(
-                categoryName = msg.categoryName, categoryImg = msg.categoryImg
-            ) to setOf(PodcastListFeature.Cmd.OnInitScreenHeader(msg.fragment))
 
         is PodcastListFeature.Msg.Internal.RefreshingResult -> {
-            PodcastListFeature.State.Fetched(
-                fetchedPodcasts = msg.refreshed
-            ) to emptySet()
-        }
-
-        is PodcastListFeature.Msg.Internal.ScreenHeaderResult -> {
-            PodcastListFeature.State.ScreenHeader(
-                categoryName = msg.categoryName,
-                categoryImg = msg.categoryImg
+            PodcastListFeature.State.Refreshed(refreshedCategories = msg.refreshed, msg.podcastCount
             ) to emptySet()
         }
 
         is PodcastListFeature.Msg.Internal.ShowError -> {
             PodcastListFeature.State.Error(message = msg.message) to emptySet()
         }
-
     }
 }

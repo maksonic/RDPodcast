@@ -1,5 +1,6 @@
 package ru.maksonic.rdpodcast.screen.categories
 
+import ru.maksonic.rdpodcast.core.base.presentation.architecture.ScreenState
 import ru.maksonic.rdpodcast.navigation.api.Navigator
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 
@@ -19,7 +20,7 @@ object CategoriesFeature {
         fun renderErrorState(state: State.Error)
     }
 
-    sealed class State {
+    sealed class State : ScreenState {
         object Loading : State()
         data class Fetched(val fetchedCategories: List<CategoryUi> = emptyList()) : State()
         object Refresh : State()
@@ -35,9 +36,9 @@ object CategoriesFeature {
         }
 
         sealed class Internal : Msg() {
-            data class FetchingResult(val categories: List<CategoryUi>) : Msg()
-            data class RefreshingResult(val refreshed: List<CategoryUi>) : Msg()
-            data class ShowError(val message: String) : Msg()
+            data class FetchingResult(val categories: List<CategoryUi>) : Internal()
+            data class RefreshingResult(val refreshed: List<CategoryUi>) : Internal()
+            data class ShowError(val message: String) : Internal()
         }
     }
 
@@ -45,8 +46,7 @@ object CategoriesFeature {
         object FetchCacheOrCloudCategories : Cmd()
         object FetchCloudCategories : Cmd()
         data class NavigateToPodcastList(
-            val navigator: Navigator,
-            val category: CategoryUi?
+            val navigator: Navigator, val category: CategoryUi?
         ) : Cmd()
     }
 }

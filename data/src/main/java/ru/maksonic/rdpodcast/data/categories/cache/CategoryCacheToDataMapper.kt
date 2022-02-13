@@ -8,20 +8,19 @@ import javax.inject.Inject
  * @Author: maksonic on 07.02.2022
  */
 class CategoryCacheToDataMapper @Inject constructor() : Mapper<CategoryCache, CategoryData> {
+     override fun from(i: CategoryCache) = CategoryData(
+         id = i.id,
+         categoryId = i.categoryId,
+         name = i.name,
+         description = i.description,
+         image = i.image
+     )
 
-    override fun from(i: CategoryCache?) = CategoryData(
-        id = i!!.id,
-        categoryId = i.categoryId,
-        name = i.name,
-        description = i.description,
-        image = i.image
-    )
-
-    override fun to(o: CategoryData?) = CategoryCache(
-        id = o!!.id!!,
-        categoryId = o.categoryId,
-        name = o.name,
-        description = o.description,
-        image = o.image
-    )
+     override fun to(o: CategoryData) = CategoryCache(
+         id = o.id!!,
+         categoryId = o.categoryId,
+         name = o.name,
+         description = o.description,
+         image = o.image
+     )
 }

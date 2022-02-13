@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="log_start_fetching_from_cloud">|I| Start fetching data from CLOUD</string>
+    <string name="log_success_fetching_from_cloud">|S| Fetched data from CLOUD. Size %d</string>
+    <string name="log_error_category_not_found">|E| Category name not found</string>
+    <string name="log_error_fetching_from_cloud">|E| Fetching data from CLOUD. Cause: %1$s</string>
+    <string name="log_category_error_empty_list">|E| Empty selected category</string>
+
+    <string name="log_start_fetching_from_cache">|I| Start fetching data from CACHE</string>
+    <string name="log_success_fetching_from_cache">|S| Fetched data from CACHE. Size %d</string>
+    <string name="log_error_empty_cache_list">|E| Empty fetched CACHE list.</string>
+    <string name="log_error_fetching_from_cache">|E| Fetching data from CACHE. Cause: %1$s</string>
+
+    <string name="log_start_saving_to_cache">|I| Start saving data to CACHE</string>
+    <string name="log_success_saving_to_cache">|S| Saved data to CACHE. Size %d</string>
+    <string name="log_error_empty_saved_cache_list">|E| Empty saved CACHE list.</string>
+    <string name="log_error_saving_to_cache_list">|E| Empty saved CACHE list. Cause: %1$s</string>
+
+    <!-- FETCHING CATEGORIES-->
+    <string name="error_fetch_categories">Ничего не найдено. Повторите попытку.</string>
+    <string name="error_net_timeout">"Превышено время ожидания от сервера…\nПроверь интернет соединение!"</string>
+    <string name="error_empty_data_cloud_list">Не удалось загрузить новые данные.\nВозможно отсутствует интернет соединение.</string>
+    <string name="error_empty_data_cache_list">Не удалось загрузить данные из кеша.\n Загрузить из интернета?</string>
+    <!-- FETCHING PODCAST-->
+    <string name="error_empty_category">Произошла ошибка. Выбранная категория не существует.</string>
+</resources>

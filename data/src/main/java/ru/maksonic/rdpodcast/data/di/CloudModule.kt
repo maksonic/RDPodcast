@@ -7,10 +7,14 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import ru.maksonic.rdpodcast.core.ResourceProvider
+import ru.maksonic.rdpodcast.core.data.CloudDataSource
+import ru.maksonic.rdpodcast.core.data.NetworkException
 import ru.maksonic.rdpodcast.core.di.IoDispatcher
 import ru.maksonic.rdpodcast.data.FirebaseApi
+import ru.maksonic.rdpodcast.data.categories.CategoryData
 import ru.maksonic.rdpodcast.data.categories.cloud.CategoriesCloudDataSource
 import ru.maksonic.rdpodcast.data.podcast.PodcastCloudDataSource
+import ru.maksonic.rdpodcast.data.podcast.PodcastData
 import javax.inject.Singleton
 
 /**
@@ -29,17 +33,19 @@ object CloudModule {
     fun provideCategoriesCloudDataSource(
         api: FirebaseApi,
         provider: ResourceProvider,
+        networkException: NetworkException,
         @IoDispatcher dispatcher: CoroutineDispatcher,
-    ): CategoriesCloudDataSource =
-        CategoriesCloudDataSource.Base(api, provider, dispatcher)
+    ): CloudDataSource<CategoryData> =
+        CategoriesCloudDataSource(api, provider, networkException, dispatcher)
 
     @ExperimentalCoroutinesApi
     @Provides
     fun providePodcastCloudDataSource(
         api: FirebaseApi,
         provider: ResourceProvider,
+        networkException: NetworkException,
         @IoDispatcher dispatcher: CoroutineDispatcher,
-    ): PodcastCloudDataSource =
-        PodcastCloudDataSource.Base(api, provider, dispatcher)
+    ): CloudDataSource<PodcastData> =
+        PodcastCloudDataSource(api, provider, networkException, dispatcher)
 
 }

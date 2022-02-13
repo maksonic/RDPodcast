@@ -1,4 +1,4 @@
-package ru.maksonic.rdpodcast.core.data
+package ru.maksonic.rdpodcast.core.base.presentation
 
 /**
  * @Author: maksonic on 07.02.2022

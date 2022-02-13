@@ -37,7 +37,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     abstract fun prepareView(savedInstanceState: Bundle?)
 
-
     private fun toolbarBackPressed() {
         view?.findViewById<Toolbar>(R.id.toolBar)
             ?.setNavigationOnClickListener { requireActivity().onBackPressed() }

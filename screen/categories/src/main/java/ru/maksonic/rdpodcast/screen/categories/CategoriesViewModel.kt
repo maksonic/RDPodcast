@@ -37,11 +37,7 @@ class CategoriesViewModel @Inject constructor(
             }
             is CategoriesFeature.Msg.Ui.OnCategoryClicked -> {
                 state to setOf(
-                    CategoriesFeature.Cmd.NavigateToPodcastList(
-                        msg.navigator,
-                        msg.category
-                    )
-                )
+                    CategoriesFeature.Cmd.NavigateToPodcastList(msg.navigator, msg.category))
             }
             is CategoriesFeature.Msg.Internal.RefreshingResult -> {
                 CategoriesFeature.State.Refreshed(refreshedCategories = msg.refreshed) to emptySet()

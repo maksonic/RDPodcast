@@ -4,10 +4,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ru.maksonic.rdpodcast.core.data.Repository
 import ru.maksonic.rdpodcast.domain.categories.CategoriesInteractor
-import ru.maksonic.rdpodcast.domain.categories.CategoriesRepository
+import ru.maksonic.rdpodcast.domain.categories.CategoryDomain
+import ru.maksonic.rdpodcast.domain.podcast.PodcastDomain
 import ru.maksonic.rdpodcast.domain.podcast.PodcastInteractor
-import ru.maksonic.rdpodcast.domain.podcast.PodcastRepository
 
 /**
  * @Author: maksonic on 07.02.2022
@@ -17,14 +18,10 @@ import ru.maksonic.rdpodcast.domain.podcast.PodcastRepository
 object DomainModule {
 
     @Provides
-    fun provideCategoriesInteractor(
-        categoriesRepository: CategoriesRepository,
-    ): CategoriesInteractor =
-        CategoriesInteractor.Base(categoriesRepository)
+    fun provideCategoriesInteractor(repository: Repository<CategoryDomain>): CategoriesInteractor =
+        CategoriesInteractor.Base(repository)
 
     @Provides
-    fun providePodcastInteractor(
-        repository: PodcastRepository,
-    ): PodcastInteractor =
+    fun providePodcastInteractor(repository: Repository<PodcastDomain>): PodcastInteractor =
         PodcastInteractor.Base(repository)
 }
