@@ -15,6 +15,7 @@ import ru.maksonic.rdpodcast.data.podcast.PodcastDataToDomainMapper
 import ru.maksonic.rdpodcast.data.podcast.PodcastRepository
 import ru.maksonic.rdpodcast.domain.categories.CategoryDomain
 import ru.maksonic.rdpodcast.domain.podcast.PodcastDomain
+import javax.inject.Singleton
 
 /**
  * @Author: maksonic on 24.11.2021
@@ -23,9 +24,11 @@ import ru.maksonic.rdpodcast.domain.podcast.PodcastDomain
 @InstallIn(SingletonComponent::class)
 object DataModule {
 
+    @Singleton
     @Provides
     fun provideGson() = Gson()
 
+    @Singleton
     @Provides
     fun provideCategoriesRepository(
         cloud: CategoriesCloudDataSource,
@@ -33,6 +36,7 @@ object DataModule {
         mapper: CategoryDataToDomainMapper,
     ): Repository<CategoryDomain> = CategoriesRepository(cloud, cache, mapper)
 
+    @Singleton
     @Provides
     fun providePodcastRepository(
         cloud: PodcastCloudDataSource,

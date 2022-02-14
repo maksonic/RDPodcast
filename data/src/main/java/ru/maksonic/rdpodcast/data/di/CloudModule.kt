@@ -28,6 +28,7 @@ object CloudModule {
     @Provides
     fun provideFirebaseApi(): FirebaseApi = FirebaseApi.Base()
 
+    @Singleton
     @ExperimentalCoroutinesApi
     @Provides
     fun provideCategoriesCloudDataSource(
@@ -38,6 +39,7 @@ object CloudModule {
     ): CloudDataSource<CategoryData> =
         CategoriesCloudDataSource(api, provider, networkException, dispatcher)
 
+    @Singleton
     @ExperimentalCoroutinesApi
     @Provides
     fun providePodcastCloudDataSource(

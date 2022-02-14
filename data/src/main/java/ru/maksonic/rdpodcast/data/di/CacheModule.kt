@@ -36,6 +36,7 @@ object CacheModule {
     @Provides
     fun provideCategoryDao(db: RdDatabase): CategoryDao = db.categoryDao()
 
+    @Singleton
     @Provides
     fun provideCategoriesCacheDataSource(
         dao: CategoryDao,

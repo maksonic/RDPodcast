@@ -12,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import ru.maksonic.rdpodcast.core.ResourceProvider
 import ru.maksonic.rdpodcast.core.data.NetworkException
 import ru.maksonic.rdpodcast.core.R
+import javax.inject.Singleton
 
 /**
  * @Author: maksonic on 07.02.2022
@@ -20,13 +21,16 @@ import ru.maksonic.rdpodcast.core.R
 @InstallIn(SingletonComponent::class)
 object CoreModule {
 
+    @Singleton
     @Provides
     fun provideResourceProvider(@ApplicationContext context: Context): ResourceProvider =
         ResourceProvider.Base(context)
 
+    @Singleton
     @Provides
     fun provideNetworkException(): NetworkException = NetworkException.Base()
 
+    @Singleton
     @Provides
     fun provideGlide(@ApplicationContext context: Context) =
         Glide.with(context).setDefaultRequestOptions(
