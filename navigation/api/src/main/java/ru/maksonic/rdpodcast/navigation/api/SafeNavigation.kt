@@ -3,7 +3,6 @@ package ru.maksonic.rdpodcast.navigation.api
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
