@@ -56,7 +56,7 @@
                     tools:text="Category name" />
                 <TextView
                     android:id="@+id/categoryDescription"
-                    style="@style/TextView.Body.RDTheme"
+                    style="@style/TextView.BodySecondary.RDTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"

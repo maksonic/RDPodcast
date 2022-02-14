@@ -42,6 +42,7 @@ dependencies {
     implementation(Lib.Navigation.fragment)
     implementation(Lib.RoomDatabase.roomKtx)
     implementation(Lib.Dagger.hilt)
+    implementation(Lib.glide)
     implementation(Lib.timber)
     kapt(Lib.Dagger.hiltCompiler)
 

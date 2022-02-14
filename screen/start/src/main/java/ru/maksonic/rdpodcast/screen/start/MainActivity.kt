@@ -10,17 +10,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.target.Target
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import ru.maksonic.rdpodcast.core.ui.DebounceClickListener
-import ru.maksonic.rdpodcast.core.ui.ToolBarBehavior
+import ru.maksonic.rdpodcast.core.ui.*
 import ru.maksonic.rdpodcast.screen.start.databinding.ActivityMainBinding
 import ru.maksonic.rdpodcast.shared.ui_resources.UiVisibility.gone
 import ru.maksonic.rdpodcast.shared.ui_resources.UiVisibility.visible
-
-import ru.maksonic.rdpodcast.core.ui.Player
-
+import javax.inject.Inject
 
 /**
  * @Author: maksonic on 05.02.2022
@@ -29,6 +28,9 @@ import ru.maksonic.rdpodcast.core.ui.Player
 class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
 
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var imageLoader: RequestManager
     private var _navController: NavController? = null
     private val navController: NavController
         get() = requireNotNull(_navController)
@@ -54,13 +56,11 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
         initNavController()
         initGraphDestination(navController)
         calculatePaddingValue()
+        binding.navGraphContainer.setPadding(0, 0, 0, shownPlayerPadding)
+        initBottomSheet()
         with(binding) {
             playerBottomSheet.clickableView.setOnClickListener(clickListener)
-            _bottomSheetBehavior = BottomSheetBehavior.from(playerBottomSheet.bottomSheet)
-            bottomSheetBehavior.setPeekHeight(shownPlayerPadding, true)
             bottomNavigation.setupWithNavController(navController)
-            navGraphContainer.setPadding(0, 0, 0, shownPlayerPadding)
-
         }
         mergeBottomSheetBehaviorWithMotionTransition()
     }
@@ -70,6 +70,15 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
         return true
     }
 
+    private fun initBottomSheet() {
+        _bottomSheetBehavior = BottomSheetBehavior.from(binding.playerBottomSheet.bottomSheet)
+        bottomSheetBehavior.setPeekHeight(shownPlayerPadding, true)
+        bottomSheetBehavior.setStateHidden()
+        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_HIDDEN) {
+            binding.navGraphContainer.setPadding(0, 0, 0, hiddenPlayerPadding)
+        }
+
+    }
     private fun initNavController() {
         val host =
             supportFragmentManager.findFragmentById(R.id.navGraphContainer) as NavHostFragment
@@ -119,6 +128,7 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
                     }
 
                     BottomSheetBehavior.STATE_HIDDEN -> {
+                        binding.navGraphContainer.setPadding(0, 0, 0, hiddenPlayerPadding)
                     }
                 }
             }
@@ -135,27 +145,30 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
         })
     }
 
+    override fun setPodcastInfo(categoryName: String, podcastName: String?, podcastImg: String?) {
+        with(binding) {
+            imageLoader.load(podcastImg).override(Target.SIZE_ORIGINAL).into(playerBottomSheet.imgPodcast)
+            playerBottomSheet.apply {
+                txtPodcastCategory.text = categoryName
+                txtPodcastNameCollapsed.text = podcastName
+                txtPodcastNameCollapsed.isSelected = true
+                txtPodcastNameExpanded.text = podcastName
+                txtPodcastNameExpanded.isSelected = true
+            }
+        }
+    }
+
     override fun playClicked() {
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetBehavior.setStateExpanded()
     }
 
     private val clickListener = object : DebounceClickListener() {
         override fun debounceClick(v: View?) {
             with(binding) {
                 when (v?.id) {
-                    playerBottomSheet.clickableView.id -> {
-                        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                    }
+                    playerBottomSheet.clickableView.id -> bottomSheetBehavior.setStateExpanded()
                 }
             }
-        }
-    }
-
-    override fun onBackPressed() {
-        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        } else {
-            super.onBackPressed()
         }
     }
 
@@ -165,5 +178,13 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
 
     override fun hideMainToolbar() {
         binding.appBarLayout.gone(false)
+    }
+
+    override fun onBackPressed() {
+        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.setStateCollapsed()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

@@ -1,20 +1,17 @@
 package ru.maksonic.rdpodcast.feature.podcast
 
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import com.bumptech.glide.RequestManager
 import dagger.hilt.android.AndroidEntryPoint
 import ru.maksonic.rdpodcast.core.base.presentation.BaseBottomSheetDialog
 import ru.maksonic.rdpodcast.core.ui.DebounceClickListener
+import ru.maksonic.rdpodcast.core.ui.toastShort
 import ru.maksonic.rdpodcast.feature.podcast.databinding.BottomSheetPodcastActionBinding
+import ru.maksonic.rdpodcast.navigation.api.navigationData
+import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
 import javax.inject.Inject
 
 /**
@@ -24,17 +21,31 @@ import javax.inject.Inject
 class PodcastActionBottomSheet : BaseBottomSheetDialog<BottomSheetPodcastActionBinding>() {
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> BottomSheetPodcastActionBinding
         get() = BottomSheetPodcastActionBinding::inflate
-    companion object {
-        const val TAG = "PodcastActionBottomSheet"
-    }
+
+    @Inject
+    lateinit var imageLoader: RequestManager
+
+    private var _passedData: PodcastUi? = null
+    private val passedData: PodcastUi
+        get() = requireNotNull(_passedData)
 
     override fun prepareView(savedInstanceState: Bundle?) {
+        _passedData = navigationData as? PodcastUi
         initClicks()
+        binding.txtPodcastName.apply {
+            text = passedData.name
+            isSelected = true
+        }
+        imageLoader.load(passedData.image).into(binding.imgPodcast)
     }
 
     private fun initClicks() {
         with(binding) {
-          //  btnGoogleSignUp.setOnClickListener(clickListener)
+            btnPlayPodcast.setOnClickListener(clickListener)
+            btnFavoritePodcast.setOnClickListener(clickListener)
+            btnDownloadPodcast.setOnClickListener(clickListener)
+            btnYoutubePodcast.setOnClickListener(clickListener)
+            btnSharePodcast.setOnClickListener(clickListener)
 
         }
     }
@@ -43,10 +54,11 @@ class PodcastActionBottomSheet : BaseBottomSheetDialog<BottomSheetPodcastActionB
         override fun debounceClick(v: View?) {
             with(binding) {
                 when (v?.id) {
-                 /*   btnGoogleSignUp.id -> {
-                        Toast.makeText(context, "Google auth", Toast.LENGTH_SHORT)
-                            .show()
-                    }*/
+                    btnPlayPodcast.id -> toastShort(context, "Play")
+                    btnFavoritePodcast.id -> toastShort(context, "Add to favorite")
+                    btnDownloadPodcast.id -> toastShort(context, "Download")
+                    btnYoutubePodcast.id -> toastShort(context, "Go to Youtube")
+                    btnSharePodcast.id -> toastShort(context, "Share")
 
                 }
             }

@@ -16,6 +16,7 @@
 
     <dimen name="elevation_toolbar">2dp</dimen>
 
+    <dimen name="corner_radius_4dp">4dp</dimen>
     <dimen name="corner_radius_8dp">8dp</dimen>
     <dimen name="corner_radius_16dp">16dp</dimen>
     <dimen name="corner_radius_24dp">24dp</dimen>

@@ -3,6 +3,7 @@ package ru.maksonic.rdpodcast.navigation.api
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
+import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
 import javax.inject.Inject
 
 /**
@@ -19,6 +20,7 @@ interface Router {
     fun authToLogIn()
     //Categories
     fun toCategoryPodcastList(category: CategoryUi?)
+    fun showPodcastAction(podcast: PodcastUi?)
 
     class Base @Inject constructor(val fragment: Fragment) : Router {
         override fun showOnboarding() {
@@ -44,6 +46,11 @@ interface Router {
 
         override fun toCategoryPodcastList(category: CategoryUi?) {
             fragment.navigate(R.id.action_categoriesScreen_to_screenPodcastList, data = category)
+        }
+
+        override fun showPodcastAction(podcast: PodcastUi?) {
+            fragment.navigate(R.id.action_screenPodcastList_to_podcastActionBottomSheet,
+                data = podcast)
         }
     }
 }

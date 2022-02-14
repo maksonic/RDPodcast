@@ -12,7 +12,6 @@ interface ResourceProvider {
     fun getString(@StringRes id: Int, vararg formatArgs: Any?): String
 
     class Base @Inject constructor(private val context: Context) : ResourceProvider {
-
         override fun getString(id: Int, vararg formatArgs: Any?) =
             context.getString(id, *formatArgs)
     }

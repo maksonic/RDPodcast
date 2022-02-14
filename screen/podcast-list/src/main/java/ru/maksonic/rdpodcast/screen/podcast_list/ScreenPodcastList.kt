@@ -3,11 +3,11 @@ package ru.maksonic.rdpodcast.screen.podcast_list
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.RequestManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -16,7 +16,6 @@ import ru.maksonic.rdpodcast.core.base.presentation.BaseFragment
 import ru.maksonic.rdpodcast.core.base.presentation.Delay
 import ru.maksonic.rdpodcast.core.ui.Player
 import ru.maksonic.rdpodcast.core.ui.ToolBarBehavior
-import ru.maksonic.rdpodcast.feature.podcast.PodcastActionBottomSheet
 import ru.maksonic.rdpodcast.feature.podcast.PodcastAdapter
 import ru.maksonic.rdpodcast.navigation.api.Navigator
 import ru.maksonic.rdpodcast.navigation.api.navigationData
@@ -37,6 +36,9 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
 
     @Inject
     lateinit var navigator: Navigator
+
+    @Inject
+    lateinit var imageLoader: RequestManager
 
     private var _adapter: PodcastAdapter? = null
     private val adapter: PodcastAdapter
@@ -66,20 +68,23 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
         with(binding) {
             categoryName.text = passedData.name
             toolBar.title = passedData.name
-            Glide.with(imgCategory).load(passedData.image).into(imgCategory)
+            imageLoader.load(passedData.image).into(imgCategory)
         }
     }
 
     override fun initRecyclerAdapter() {
         _adapter = PodcastAdapter(
+            imageLoader,
             onClick = {
                 (activity as Player).playClicked()
+                (activity as Player).setPodcastInfo(
+                    categoryName = passedData.name,
+                    podcastName = it?.name,
+                    podcastImg = it?.image
+                )
             },
             onMoreClick = {
-                PodcastActionBottomSheet().show(
-                    childFragmentManager,
-                    PodcastActionBottomSheet.TAG
-                )
+                navigator.showPodcastAction(it)
             }
         )
         binding.podcastRecyclerView.adapter = _adapter
@@ -163,7 +168,8 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
     }
 
     override fun fetchDataAction() = viewModel.dispatch(
-        PodcastListFeature.Msg.Ui.FetchPodcasts(passedData.categoryId))
+        PodcastListFeature.Msg.Ui.FetchPodcasts(passedData.categoryId)
+    )
 
     override fun refreshDataAction(category: String?) =
         viewModel.dispatch(PodcastListFeature.Msg.Ui.RefreshPodcasts(category))

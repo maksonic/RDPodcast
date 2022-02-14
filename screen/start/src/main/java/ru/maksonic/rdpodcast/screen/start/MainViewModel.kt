@@ -18,7 +18,7 @@ class MainViewModel: ViewModel() {
     val uiState: StateFlow<Authorized> = _uiState.asStateFlow()
 
     init {
-        _uiState.value = Authorized(false)
+        _uiState.value = Authorized(true)
     }
 
 

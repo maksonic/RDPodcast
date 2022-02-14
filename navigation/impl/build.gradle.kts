@@ -42,6 +42,7 @@ dependencies {
     implementation(project(Screen.COLLECTIONS))
     implementation(project(Screen.PODCAST_LIST))
     implementation(project(Feature.USER_AUTH))
+    implementation(project(Feature.PODCAST))
     implementation(Lib.Navigation.fragment)
     implementation(Lib.Navigation.ui)
 

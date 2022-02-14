@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,7 @@
     app:behavior_hideable="true"
     app:layoutDescription="@xml/bottom_sheet_scene"
     app:layout_behavior="@string/bottom_sheet_behavior">
+
     <View
         android:id="@+id/bottomSheetIndicator"
         android:layout_width="32dp"
@@ -23,36 +25,31 @@
     <View
         android:id="@+id/clickableView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        />
+        android:layout_height="0dp" />
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgPodcast"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/padding_32dp"
-        android:layout_marginTop="@dimen/padding_8dp"
-        android:layout_marginEnd="@dimen/padding_32dp"
         android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomSheetIndicator"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
         app:srcCompat="@drawable/podcast_image" />
 
     <TextView
-        android:id="@+id/podcastNameCollapsed"
-        style="@style/TextView.Body.RDTheme"
+        android:id="@+id/txtPodcastNameCollapsed"
+        style="@style/TextView.BodyPrimary.RDTheme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:marqueeRepeatLimit="marquee_forever"
         android:orientation="horizontal"
         android:singleLine="true"
-        android:text="Podcast name" />
+        tools:text="Podcast name" />
 
     <ImageView
         android:id="@+id/btnPlayControlPanel"
@@ -68,14 +65,15 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:orientation="vertical">
+
         <Space
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/txtPodcastName"
-            style="@style/TextView.Body.RDTheme"
+            android:id="@+id/txtPodcastNameExpanded"
+            style="@style/TextView.Header.RDTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_24dp"
@@ -85,20 +83,21 @@
             android:gravity="center"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
-            android:text="This is very very very long podcast name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Podcast name" />
 
         <TextView
             android:id="@+id/txtPodcastCategory"
+            style="@style/TextView.BodySecondary.RDTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/padding_8dp"
             android:fontFamily="@font/roboto"
             android:maxLines="1"
-            android:text="Podcast category name"
+            tools:text="Category name"
             android:textAppearance="?attr/textAppearanceSubtitle1"
             android:textColor="@color/color_primary" />
 
@@ -175,7 +174,7 @@
         <Space
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,13 +190,13 @@
                 android:id="@+id/btnPodcastSpeedPlaying"
                 android:layout_width="@dimen/btn_nav_ic"
                 android:layout_height="@dimen/btn_nav_ic"
-                android:gravity="center"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/color_primary"
                 android:background="?android:selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="1.0x" />
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="1.0x"
+                android:textColor="@color/color_primary" />
 
             <Space
                 android:layout_width="0dp"

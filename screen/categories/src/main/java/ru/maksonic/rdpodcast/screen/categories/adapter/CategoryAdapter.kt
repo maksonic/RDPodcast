@@ -3,6 +3,7 @@ package ru.maksonic.rdpodcast.screen.categories.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.RequestManager
 import ru.maksonic.rdpodcast.core.base.presentation.BaseRecyclerAdapter
 import ru.maksonic.rdpodcast.screen.categories.databinding.ItemCategoryBinding
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
@@ -12,12 +13,14 @@ import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
  */
 class CategoryAdapter constructor(
     private val onCategoryClicked: ((CategoryUi?) -> Unit)? = null,
+    private val imageLoader: RequestManager
 ) : BaseRecyclerAdapter<CategoryUi, ItemCategoryBinding, CategoryViewHolder>(CategoryItemDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder =
         CategoryViewHolder(
             ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-            click = onCategoryClicked
+            click = onCategoryClicked,
+            imageLoader
         )
 }
 

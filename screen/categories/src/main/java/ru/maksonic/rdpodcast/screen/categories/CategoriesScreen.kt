@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.RequestManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -31,9 +32,11 @@ class CategoriesScreen : BaseFragment<ScreenCategoriesBinding>(),
         get() = ScreenCategoriesBinding::inflate
 
     private val viewModel: CategoriesViewModel by viewModels()
-
     @Inject
     lateinit var navigator: Navigator
+    @Inject
+    lateinit var imageLoader: RequestManager
+
     private var _adapter: CategoryAdapter? = null
     private val adapter: CategoryAdapter
         get() = requireNotNull(_adapter)
@@ -49,9 +52,12 @@ class CategoriesScreen : BaseFragment<ScreenCategoriesBinding>(),
     }
 
     override fun initRecyclerAdapter() {
-        _adapter = CategoryAdapter { category ->
-            viewModel.dispatch(CategoriesFeature.Msg.Ui.OnCategoryClicked(navigator, category))
-        }
+        _adapter = CategoryAdapter(
+            onCategoryClicked = { category ->
+                viewModel.dispatch(CategoriesFeature.Msg.Ui.OnCategoryClicked(navigator, category))
+            },
+            imageLoader
+        )
         binding.categoriesRecyclerView.adapter = adapter
     }
 

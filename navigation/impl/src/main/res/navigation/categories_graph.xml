@@ -19,5 +19,13 @@
     <fragment
         android:id="@+id/screenPodcastList"
         android:name="ru.maksonic.rdpodcast.screen.podcast_list.ScreenPodcastList"
-        android:label="ScreenPodcastList" />
+        android:label="ScreenPodcastList" >
+        <action
+            android:id="@+id/action_screenPodcastList_to_podcastActionBottomSheet"
+            app:destination="@id/podcastActionBottomSheet" />
+    </fragment>
+    <dialog
+        android:id="@+id/podcastActionBottomSheet"
+        android:name="ru.maksonic.rdpodcast.feature.podcast.PodcastActionBottomSheet"
+        android:label="PodcastActionBottomSheet" />
 </navigation>

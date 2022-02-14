@@ -42,16 +42,16 @@
             <KeyAttribute
                 motion:framePosition="0"
                 android:alpha="1"
-                motion:motionTarget="@+id/podcastNameCollapsed" />
+                motion:motionTarget="@+id/txtPodcastNameCollapsed" />
 
             <KeyAttribute
                 motion:framePosition="10"
                 android:alpha="0"
-                motion:motionTarget="@+id/podcastNameCollapsed" />
+                motion:motionTarget="@+id/txtPodcastNameCollapsed" />
             <KeyAttribute
                 motion:framePosition="100"
                 android:alpha="0"
-                motion:motionTarget="@+id/podcastNameCollapsed" />
+                motion:motionTarget="@+id/txtPodcastNameCollapsed" />
             <KeyAttribute
                 motion:framePosition="0"
                 android:alpha="0"
@@ -98,7 +98,7 @@
             motion:layout_constraintStart_toStartOf="@id/container"
             motion:layout_constraintTop_toTopOf="@id/container" />
         <Constraint
-            android:id="@+id/podcastNameCollapsed"
+            android:id="@+id/txtPodcastNameCollapsed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_8dp"
@@ -135,13 +135,12 @@
 
     <ConstraintSet android:id="@+id/end">
 
-
         <Constraint
             android:id="@+id/imgPodcast"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/padding_32dp"
-            android:layout_marginTop="@dimen/padding_16dp"
+            android:layout_marginTop="?attr/actionBarSize"
             android:layout_marginEnd="@dimen/padding_32dp"
             motion:layout_constraintDimensionRatio="1:1"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +163,7 @@
             android:layout_width="@dimen/btn_player_def_size"
             android:layout_height="@dimen/btn_player_def_size" />
         <Constraint
-            android:id="@+id/podcastNameCollapsed"
+            android:id="@+id/txtPodcastNameCollapsed"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <Constraint

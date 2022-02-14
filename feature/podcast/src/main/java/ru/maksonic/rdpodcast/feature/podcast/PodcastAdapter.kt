@@ -6,8 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.RequestManager
 import ru.maksonic.rdpodcast.core.ui.click
 import ru.maksonic.rdpodcast.feature.podcast.databinding.ItemPodcastBinding
 import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
@@ -16,9 +15,11 @@ import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
  * @Author: maksonic on 09.02.2022
  */
 class PodcastAdapter(
+    private val imageLoader: RequestManager,
     private val onClick: (PodcastUi?) -> Unit,
-    private val onMoreClick: (PodcastUi?) -> Unit
+    private val onMoreClick: (PodcastUi?) -> Unit,
 ) : ListAdapter<PodcastUi, PodcastAdapter.PodcastViewHolder>(PodcastItemDiffUtil()) {
+
     private var selectedPodcast = 0
 
     inner class PodcastViewHolder(
@@ -61,12 +62,7 @@ class PodcastAdapter(
             with(binding) {
                 setUnSelectedItemBackgroundColor()
                 txtPodcastName.text = podcast.name
-                Glide.with(imgPodcast)
-                    .load(podcast.image)
-                    .placeholder(R.drawable.podcast_image)
-                    .error(R.drawable.podcast_image)
-                    .apply(RequestOptions().override(100, 100))
-                    .into(imgPodcast)
+                imageLoader.load(podcast.image).override(100, 100).into(imgPodcast)
             }
         }
 

@@ -1,9 +1,8 @@
 package ru.maksonic.rdpodcast.screen.categories.adapter
 
-import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import ru.maksonic.rdpodcast.core.base.presentation.BaseViewHolder
 import ru.maksonic.rdpodcast.core.ui.click
-import ru.maksonic.rdpodcast.screen.categories.R
 import ru.maksonic.rdpodcast.screen.categories.databinding.ItemCategoryBinding
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 
@@ -13,6 +12,7 @@ import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 class CategoryViewHolder constructor(
     private val binding: ItemCategoryBinding,
     private val click: ((CategoryUi?) -> Unit)? = null,
+    private val imageLoader: RequestManager
 ) : BaseViewHolder<CategoryUi, ItemCategoryBinding>(binding) {
 
     init {
@@ -27,11 +27,7 @@ class CategoryViewHolder constructor(
             with(binding) {
                 categoryName.text = it.name
                 categoryDescription.text = it.description
-                Glide.with(imgCategory)
-                    .load(it.image)
-                    .placeholder(R.drawable.podcast_image)
-                    .error(R.drawable.podcast_image)
-                    .into(imgCategory)
+                imageLoader.load(it.image).into(imgCategory)
             }
         }
     }
