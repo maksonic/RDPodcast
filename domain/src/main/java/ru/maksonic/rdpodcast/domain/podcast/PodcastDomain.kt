@@ -1,7 +1,6 @@
 package ru.maksonic.rdpodcast.domain.podcast
 
-import ru.maksonic.rdpodcast.core.base.Abstract
-
+import ru.maksonic.rdpodcast.core.Abstract
 
 /**
  * @Author: maksonic on 10.02.2022
@@ -12,4 +11,7 @@ data class PodcastDomain(
     val name: String = "",
     val image: String = "",
     val soundFile: String = "",
+    val isCurrentPlaying: Boolean = false,
+    val isFavorite: Boolean = false,
+    val isDownloaded: Boolean = false
 ) : Abstract.DomainObject

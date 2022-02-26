@@ -11,6 +11,7 @@
     app:layoutDescription="@xml/bottom_sheet_scene"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
+
     <View
         android:id="@+id/bottomSheetIndicator"
         android:layout_width="32dp"
@@ -26,7 +27,6 @@
         android:id="@+id/clickableView"
         android:layout_width="0dp"
         android:layout_height="0dp" />
-
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgPodcast"
@@ -97,17 +97,17 @@
             android:layout_marginTop="@dimen/padding_8dp"
             android:fontFamily="@font/roboto"
             android:maxLines="1"
-            tools:text="Category name"
             android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="@color/color_primary" />
+            android:textColor="@color/color_primary"
+            tools:text="Category name" />
 
         <com.google.android.material.slider.Slider
             android:id="@+id/playerSliderBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_24dp"
+            android:layout_marginStart="@dimen/padding_32dp"
             android:layout_marginTop="@dimen/padding_8dp"
-            android:layout_marginEnd="@dimen/padding_24dp"
+            android:layout_marginEnd="@dimen/padding_32dp"
             app:labelBehavior="gone"
             app:thumbColor="@color/color_primary"
             app:thumbStrokeColor="@color/color_primary"
@@ -117,14 +117,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_24dp"
-            android:layout_marginEnd="@dimen/padding_24dp"
+            android:layout_marginStart="@dimen/padding_32dp"
+            android:layout_marginEnd="@dimen/padding_32dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/totalTimePodcast"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_12dp"
                 android:layout_weight="1"
                 android:text="0:00" />
 
@@ -132,6 +133,7 @@
                 android:id="@+id/currentTimePodcast"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/padding_16dp"
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="5:00" />
@@ -179,9 +181,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_24dp"
+            android:layout_marginStart="@dimen/padding_32dp"
             android:layout_marginTop="@dimen/padding_16dp"
-            android:layout_marginEnd="@dimen/padding_24dp"
+            android:layout_marginEnd="@dimen/padding_32dp"
             android:layout_marginBottom="@dimen/padding_24dp"
             android:gravity="center"
             android:orientation="horizontal">

@@ -10,7 +10,6 @@ import ru.maksonic.rdpodcast.core.data.NetworkException
 import ru.maksonic.rdpodcast.core.di.IoDispatcher
 import ru.maksonic.rdpodcast.data.FirebaseApi
 import ru.maksonic.rdpodcast.data.categories.CategoryData
-import ru.maksonic.rdpodcast.data.categories.cache.CategoryCache
 import javax.inject.Inject
 
 /**
@@ -21,7 +20,7 @@ class CategoriesCloudDataSource @Inject constructor(
     res: ResourceProvider,
     networkException: NetworkException,
     @IoDispatcher dispatcher: CoroutineDispatcher
-) : BaseCloudDataSource<CategoryData>(api, res, networkException, dispatcher) {
+) : BaseCloudDataSource<CategoryData>(res, networkException, dispatcher) {
 
     override suspend fun response(vararg data: Any?): QuerySnapshot =
         api.categoriesCollection.orderBy("id").get(Source.SERVER).await()

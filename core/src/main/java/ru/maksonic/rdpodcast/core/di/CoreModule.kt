@@ -4,6 +4,9 @@ import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC
+import com.google.android.exoplayer2.C.USAGE_MEDIA
+import com.google.android.exoplayer2.audio.AudioAttributes
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

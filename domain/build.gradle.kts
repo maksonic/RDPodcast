@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(Lib.Jetbrains.coroutinesAndroid)
 
     implementation(Lib.Dagger.hilt)
     kapt(Lib.Dagger.hiltCompiler)

@@ -1,6 +1,6 @@
 package ru.maksonic.rdpodcast.domain.categories
 
-import ru.maksonic.rdpodcast.core.base.Abstract
+import ru.maksonic.rdpodcast.core.Abstract
 
 /**
  * @Author: maksonic on 07.02.2022

@@ -9,6 +9,7 @@ import ru.maksonic.rdpodcast.domain.categories.CategoriesInteractor
 import ru.maksonic.rdpodcast.domain.categories.CategoryDomain
 import ru.maksonic.rdpodcast.domain.podcast.PodcastDomain
 import ru.maksonic.rdpodcast.domain.podcast.PodcastInteractor
+import ru.maksonic.rdpodcast.domain.podcast.PodcastRepository
 import javax.inject.Singleton
 
 /**
@@ -25,6 +26,6 @@ object DomainModule {
 
     @Singleton
     @Provides
-    fun providePodcastInteractor(repository: Repository<PodcastDomain>): PodcastInteractor =
+    fun providePodcastInteractor(repository: PodcastRepository<PodcastDomain>): PodcastInteractor =
         PodcastInteractor.Base(repository)
 }

@@ -13,4 +13,7 @@ data class PodcastUi(
     val name: String = "",
     val image: String = "",
     val soundFile: String = "",
+    val isCurrentPlaying: Boolean = false,
+    val isFavorite: Boolean = false,
+    val isDownloaded: Boolean = false
 ) : Parcelable

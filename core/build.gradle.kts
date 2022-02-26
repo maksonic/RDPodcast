@@ -43,6 +43,7 @@ dependencies {
     implementation(Lib.RoomDatabase.roomKtx)
     implementation(Lib.Dagger.hilt)
     implementation(Lib.glide)
+    implementation ("com.google.android.exoplayer:exoplayer:2.16.1")
     implementation(Lib.timber)
     kapt(Lib.Dagger.hiltCompiler)
 

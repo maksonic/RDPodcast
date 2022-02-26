@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/global_graph.xml"
-    app:startDestination="@id/main_graph">
+    android:id="@+id/start_graph"
+    app:startDestination="@id/mainScreen">
     <dialog
         android:id="@+id/onboardingScreen"
         android:name="ru.maksonic.rdpodcast.screen.onboarding.OnboardingScreen"
@@ -12,9 +12,10 @@
             app:destination="@id/auth_graph" />
     </dialog>
 
-    <include
-        android:id="@+id/main_graph"
-        app:graph="@navigation/main_graph" />
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="ru.maksonic.rdpodcast.screen.main.MainScreen"
+        android:label="MainScreen" />
    <include
         android:id="@+id/categories_graph"
         app:graph="@navigation/categories_graph" />

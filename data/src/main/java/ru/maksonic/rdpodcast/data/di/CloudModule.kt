@@ -13,7 +13,7 @@ import ru.maksonic.rdpodcast.core.di.IoDispatcher
 import ru.maksonic.rdpodcast.data.FirebaseApi
 import ru.maksonic.rdpodcast.data.categories.CategoryData
 import ru.maksonic.rdpodcast.data.categories.cloud.CategoriesCloudDataSource
-import ru.maksonic.rdpodcast.data.podcast.PodcastCloudDataSource
+import ru.maksonic.rdpodcast.data.podcast.cloud.PodcastCloudDataSource
 import ru.maksonic.rdpodcast.data.podcast.PodcastData
 import javax.inject.Singleton
 

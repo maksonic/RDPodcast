@@ -10,11 +10,13 @@ import ru.maksonic.rdpodcast.data.categories.CategoriesRepository
 import ru.maksonic.rdpodcast.data.categories.CategoryDataToDomainMapper
 import ru.maksonic.rdpodcast.data.categories.cache.CategoriesCacheDataSource
 import ru.maksonic.rdpodcast.data.categories.cloud.CategoriesCloudDataSource
-import ru.maksonic.rdpodcast.data.podcast.PodcastCloudDataSource
 import ru.maksonic.rdpodcast.data.podcast.PodcastDataToDomainMapper
-import ru.maksonic.rdpodcast.data.podcast.PodcastRepository
+import ru.maksonic.rdpodcast.data.podcast.PodcastRepositoryImpl
+import ru.maksonic.rdpodcast.data.podcast.cache.PodcastCacheDataSource
+import ru.maksonic.rdpodcast.data.podcast.cloud.PodcastCloudDataSource
 import ru.maksonic.rdpodcast.domain.categories.CategoryDomain
 import ru.maksonic.rdpodcast.domain.podcast.PodcastDomain
+import ru.maksonic.rdpodcast.domain.podcast.PodcastRepository
 import javax.inject.Singleton
 
 /**
@@ -38,8 +40,17 @@ object DataModule {
 
     @Singleton
     @Provides
+    fun providePodcastBaseRepository(
+        cloud: PodcastCloudDataSource,
+        cache: PodcastCacheDataSource,
+        mapper: PodcastDataToDomainMapper,
+    ): Repository<PodcastDomain> = PodcastRepositoryImpl(cloud, cache, mapper)
+
+    @Singleton
+    @Provides
     fun providePodcastRepository(
         cloud: PodcastCloudDataSource,
-        mapper: PodcastDataToDomainMapper,
-    ): Repository<PodcastDomain> = PodcastRepository(cloud, mapper)
+        cache: PodcastCacheDataSource,
+        mapper: PodcastDataToDomainMapper
+    ): PodcastRepository<PodcastDomain> = PodcastRepositoryImpl(cloud, cache, mapper)
 }

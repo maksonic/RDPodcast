@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -14,6 +16,7 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.maksonic.rdpodcast.core.ui.*
 import ru.maksonic.rdpodcast.screen.start.databinding.ActivityMainBinding
@@ -54,7 +57,7 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNavController()
-        initGraphDestination(navController)
+        initStartDestination(navController)
         calculatePaddingValue()
         binding.navGraphContainer.setPadding(0, 0, 0, shownPlayerPadding)
         initBottomSheet()
@@ -83,9 +86,12 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
         val host =
             supportFragmentManager.findFragmentById(R.id.navGraphContainer) as NavHostFragment
         _navController = host.navController
+        val inflater = host.navController.navInflater
+        val graph = inflater.inflate(R.navigation.start_graph)
+        host.navController.graph = graph
     }
 
-    private fun initGraphDestination(navController: NavController) {
+    private fun initStartDestination(navController: NavController) {
         lifecycleScope.launch {
             viewModel.userAuthState(navController)
         }
@@ -150,11 +156,18 @@ class MainActivity : AppCompatActivity(), ToolBarBehavior, Player {
             imageLoader.load(podcastImg).override(Target.SIZE_ORIGINAL).into(playerBottomSheet.imgPodcast)
             playerBottomSheet.apply {
                 txtPodcastCategory.text = categoryName
-                txtPodcastNameCollapsed.text = podcastName
                 txtPodcastNameCollapsed.isSelected = true
                 txtPodcastNameExpanded.text = podcastName
                 txtPodcastNameExpanded.isSelected = true
             }
+            viewModel.setPodcastName(podcastName!!)
+        }
+        lifecycleScope.launch {
+            viewModel.uiPodcastName.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect { podcast ->
+                    binding.playerBottomSheet.txtPodcastNameCollapsed.text = podcast
+                }
+
         }
     }
 

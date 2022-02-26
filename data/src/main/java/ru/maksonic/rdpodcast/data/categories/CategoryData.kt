@@ -1,7 +1,7 @@
 package ru.maksonic.rdpodcast.data.categories
 
 import com.google.gson.annotations.SerializedName
-import ru.maksonic.rdpodcast.core.base.Abstract
+import ru.maksonic.rdpodcast.core.Abstract
 import java.io.Serializable
 
 /**

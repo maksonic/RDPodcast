@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">RDPodcast</string>
+
     <string name="log_start_fetching_from_cloud">|I| Start fetching data from CLOUD</string>
     <string name="log_success_fetching_from_cloud">|S| Fetched data from CLOUD. Size %d</string>
     <string name="log_error_category_not_found">|E| Category name not found</string>
     <string name="log_error_fetching_from_cloud">|E| Fetching data from CLOUD. Cause: %1$s</string>
-    <string name="log_category_error_empty_list">|E| Empty selected category</string>
+    <string name="log_error_empty_cloud_list">|E| Fetching data from CLOUD. Cause: Empty list - %1$s</string>
+    <string name="log_error_selected_item_empty_list">|E| Empty selected category</string>
 
     <string name="log_start_fetching_from_cache">|I| Start fetching data from CACHE</string>
     <string name="log_success_fetching_from_cache">|S| Fetched data from CACHE. Size %d</string>

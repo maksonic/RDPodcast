@@ -1,5 +1,6 @@
 package ru.maksonic.rdpodcast.data.categories
 
+import ru.maksonic.rdpodcast.core.Abstract
 import ru.maksonic.rdpodcast.core.Mapper
 import ru.maksonic.rdpodcast.domain.categories.CategoryDomain
 import javax.inject.Inject

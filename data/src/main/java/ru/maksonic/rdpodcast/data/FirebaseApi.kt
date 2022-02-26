@@ -19,6 +19,7 @@ interface FirebaseApi {
         override fun categoryCollectionName(): String {
             return CATEGORIES
         }
+
         override val podcastCollectionName = PODCAST_LIST
 
         private companion object {

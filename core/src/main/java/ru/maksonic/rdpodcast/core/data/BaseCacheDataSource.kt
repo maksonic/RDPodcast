@@ -6,7 +6,7 @@ import ru.maksonic.rdpodcast.core.Mapper
 import ru.maksonic.rdpodcast.core.R
 import ru.maksonic.rdpodcast.core.ResourceProvider
 import ru.maksonic.rdpodcast.core.Result
-import ru.maksonic.rdpodcast.core.base.Abstract
+import ru.maksonic.rdpodcast.core.Abstract
 import ru.maksonic.rdpodcast.core.logging.classTag
 import timber.log.Timber
 import java.lang.Exception
@@ -57,7 +57,7 @@ interface CacheDataSource<C, D> {
                         .e(res.getString(R.string.log_error_empty_saved_cache_list))
                 } else {
                     val cachedList = mapper.toList(data)
-                    dao?.deleteAllCachedCategories(cachedList)
+                    dao?.deleteAllCachedList(cachedList)
                     dao?.insertAll(cachedList)
                     Timber.tag(tag).d(res.getString(R.string.log_success_saving_to_cache,
                         cachedList.size))

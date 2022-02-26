@@ -2,7 +2,7 @@ package ru.maksonic.rdpodcast.core.data
 
 import ru.maksonic.rdpodcast.core.Mapper
 import ru.maksonic.rdpodcast.core.Result
-import ru.maksonic.rdpodcast.core.base.Abstract
+import ru.maksonic.rdpodcast.core.Abstract
 import java.lang.Exception
 
 /**

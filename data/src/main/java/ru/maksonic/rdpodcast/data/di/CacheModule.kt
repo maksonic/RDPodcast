@@ -17,6 +17,9 @@ import ru.maksonic.rdpodcast.data.categories.cache.CategoriesCacheDataSource
 import ru.maksonic.rdpodcast.data.categories.cache.CategoryCache
 import ru.maksonic.rdpodcast.data.categories.cache.CategoryCacheToDataMapper
 import ru.maksonic.rdpodcast.data.categories.cache.CategoryDao
+import ru.maksonic.rdpodcast.data.podcast.cache.PodcastCacheDataSource
+import ru.maksonic.rdpodcast.data.podcast.cache.PodcastCacheToDataMapper
+import ru.maksonic.rdpodcast.data.podcast.cache.PodcastDao
 import javax.inject.Singleton
 
 /**
@@ -38,6 +41,10 @@ object CacheModule {
 
     @Singleton
     @Provides
+    fun providePodcastDao(db: RdDatabase): PodcastDao = db.podcastDao()
+
+    @Singleton
+    @Provides
     fun provideCategoriesCacheDataSource(
         dao: CategoryDao,
         mapper: CategoryCacheToDataMapper,
@@ -45,4 +52,13 @@ object CacheModule {
         @IoDispatcher dispatcher: CoroutineDispatcher,
     ): BaseCacheDataSource<CategoryCache, CategoryData> =
         CategoriesCacheDataSource(dao, mapper, provider, dispatcher)
+
+    @Singleton
+    @Provides
+    fun providePodcastCacheDataSource(
+        dao: PodcastDao,
+        mapper: PodcastCacheToDataMapper,
+        @IoDispatcher dispatcher: CoroutineDispatcher,
+    ): PodcastCacheDataSource =
+        PodcastCacheDataSource.Base(dao, mapper, dispatcher)
 }

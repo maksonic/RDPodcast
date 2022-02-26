@@ -26,8 +26,8 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/start_graph" />
+        app:defaultNavHost="true" />
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/containerPlayer"
         android:layout_width="match_parent"
@@ -37,7 +37,6 @@
             android:id="@+id/playerBottomSheet"
             layout="@layout/bottom_sheet_player" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

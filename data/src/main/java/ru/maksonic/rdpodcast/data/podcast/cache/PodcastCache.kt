@@ -1,18 +1,18 @@
-package ru.maksonic.rdpodcast.data.categories.cache
+package ru.maksonic.rdpodcast.data.podcast.cache
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import ru.maksonic.rdpodcast.core.Abstract
 
 /**
- * @Author: maksonic on 07.02.2022
+ * @Author: maksonic on 20.02.2022
  */
-@Entity(tableName = "categories_cache")
-data class CategoryCache(
+@Entity(tableName = "podcast_current_cache")
+data class PodcastCache(
     @PrimaryKey
     val id: Long,
     val categoryId: String = "",
     val name: String = "",
-    val description: String = "",
     val image: String = "",
+    val soundFile: String = "",
 ) : Abstract.CacheObject

@@ -15,18 +15,12 @@ object Lib {
     const val glide = "com.github.bumptech.glide:glide:4.13.0"
 
     object Dagger {
-        private const val version = "2.40"
+        private const val version = "2.40.5"
         const val hilt = "com.google.dagger:hilt-android:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
     }
 
-
-    object Firebase {
-
-        const val authKtx = "com.google.firebase:firebase-auth-ktx:21.0.1"
-        const val firestore = "com.google.firebase:firebase-firestore-ktx:24.0.1"
-        const val googlePlay = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.1"
-    }
+    const val gson = "com.google.code.gson:gson:2.8.9"
 
     object Emoji {
         private const val version = "1.0.0"
@@ -37,7 +31,22 @@ object Lib {
         const val emoji2ViewsHelper = "androidx.emoji2:emoji2-views-helper:$version"
     }
 
-    const val gson = "com.google.code.gson:gson:2.8.9"
+    object Firebase {
+
+        const val authKtx = "com.google.firebase:firebase-auth-ktx:21.0.1"
+        const val firestore = "com.google.firebase:firebase-firestore-ktx:24.0.1"
+        const val googlePlay = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.1"
+    }
+
+
+    object Jetbrains {
+        private const val version = "1.6.0"
+
+        const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+        const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+        const val coroutinesPlayService =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
+    }
 
     object Lifecycle {
         private const val version = "2.4.0"
@@ -49,7 +58,7 @@ object Lib {
     }
 
     object Navigation {
-        private const val version = "2.4.0"
+        private const val version = "2.4.1"
         const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
         const val ui = "androidx.navigation:navigation-ui-ktx:$version"
 
