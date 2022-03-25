@@ -1,48 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mainScreen"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navGraphContainer"
+    android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    app:layoutDescription="@xml/screen_main_scene">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        style="@style/AppBarLayout.RDTheme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/main"
-            app:navigationIcon="@drawable/ic_user_profile" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navGraphContainer"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true" />
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/containerPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-
-        <include
-            android:id="@+id/playerBottomSheet"
-            layout="@layout/bottom_sheet_player" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        style="@style/BottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        app:menu="@menu/bottom_nav_menu" />
-</androidx.constraintlayout.motion.widget.MotionLayout>
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/global_graph"
+    tools:context=".MainActivity" />

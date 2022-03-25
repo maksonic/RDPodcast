@@ -48,6 +48,7 @@ object PodcastListFeature {
         sealed class Ui : Msg() {
             data class FetchPodcasts(val category: String?, val podcastCount: Int = 0) : Ui()
             data class RefreshPodcasts(val category: String?, val podcastCount: Int = 0) : Ui()
+            data class SelectPodcast(val category: String, val podcast: PodcastUi?): Ui()
         }
 
         sealed class Internal : Msg() {
@@ -65,5 +66,6 @@ object PodcastListFeature {
 
     sealed class Cmd {
         data class OnFetchCloudPodcast(val category: String?) : Cmd()
+        data class SelectCurrentPodcast(val category: String, val podcast: PodcastUi?): Cmd()
     }
 }

@@ -48,7 +48,6 @@ dependencies {
     implementation(Lib.AndroidX.coreKtx)
     implementation(Lib.AndroidX.appCompat)
     implementation(Lib.AndroidX.material)
-    implementation(Lib.glide)
     implementation(Lib.Navigation.fragment)
     implementation(Lib.Navigation.ui)
     implementation(Lib.Dagger.hilt)

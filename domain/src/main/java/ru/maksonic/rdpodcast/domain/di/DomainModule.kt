@@ -1,12 +1,16 @@
 package ru.maksonic.rdpodcast.domain.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import ru.maksonic.rdpodcast.core.ResourceProvider
 import ru.maksonic.rdpodcast.core.data.Repository
 import ru.maksonic.rdpodcast.domain.categories.CategoriesInteractor
 import ru.maksonic.rdpodcast.domain.categories.CategoryDomain
+import ru.maksonic.rdpodcast.domain.podcast.CurrentPodcastDataStore
 import ru.maksonic.rdpodcast.domain.podcast.PodcastDomain
 import ru.maksonic.rdpodcast.domain.podcast.PodcastInteractor
 import ru.maksonic.rdpodcast.domain.podcast.PodcastRepository
@@ -26,6 +30,13 @@ object DomainModule {
 
     @Singleton
     @Provides
-    fun providePodcastInteractor(repository: PodcastRepository<PodcastDomain>): PodcastInteractor =
-        PodcastInteractor.Base(repository)
+    fun providePodcastInteractor(
+        repository: PodcastRepository<PodcastDomain>,
+        dataStore: CurrentPodcastDataStore.Base): PodcastInteractor =
+        PodcastInteractor.Base(repository, dataStore = dataStore)
+
+    @Singleton
+    @Provides
+    fun provideCurrentPodcastDS(@ApplicationContext context: Context, rp: ResourceProvider) =
+        CurrentPodcastDataStore.Base(context, rp)
 }

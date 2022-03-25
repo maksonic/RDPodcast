@@ -3,5 +3,6 @@
  */
 object Feature {
     const val USER_AUTH = ":feature:user-auth"
+    const val USER_PROFILE = ":feature:user-profile"
     const val PODCAST = ":feature:podcast"
 }

@@ -40,6 +40,7 @@ dependencies {
     implementation(project(Module.CORE))
     implementation(project(Module.DOMAIN))
     implementation(project(Navigation.API))
+    implementation(project(Navigation.IMPL))
     implementation(Lib.Navigation.fragment)
     implementation(project(Shared.UI_RES))
     implementation(project(Shared.UI_MODEL))
@@ -47,6 +48,9 @@ dependencies {
     implementation(Lib.AndroidX.material)
     implementation(Lib.Lifecycle.runtimeKtx)
     implementation(Lib.AndroidX.swipeRefreshLayout)
+    implementation(Lib.glide)
+    implementation(Lib.Navigation.fragment)
+    implementation(Lib.Navigation.ui)
     implementation(Lib.Dagger.hilt)
     kapt(Lib.Dagger.hiltCompiler)
 }

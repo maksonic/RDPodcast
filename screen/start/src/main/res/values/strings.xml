@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">RDPodcast</string>
-    <string name="menu_item_settings">Настройки</string>
-    <string name="menu_item_search">Поиск</string>
+
 </resources>

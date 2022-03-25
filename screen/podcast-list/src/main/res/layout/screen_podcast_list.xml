@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <com.google.android.material.appbar.AppBarLayout
         style="@style/AppBarLayout.RDTheme"
         android:layout_width="match_parent"

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="action_mainScreen_to_onboarding_graph" type="id" />
+    <item name="navGraphContainer" type="id" />
+    <item name="action_onboardingScreen_to_mainScreen" type="id" />
     <item name="action_onboardingScreen_to_auth_graph" type="id" />
+    <item name="action_mainScreen_to_settingsScreen" type="id" />
+    <item name="action_mainScreen_to_profileScreen" type="id" />
     <item name="action_authBottomSheetDialog_to_screenPrivacyPolicy" type="id" />
     <item name="action_categoriesScreen_to_screenPodcastList" type="id" />
     <item name="action_screenPodcastList_to_podcastActionBottomSheet" type="id" />

@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(Lib.AndroidX.dataStore)
     implementation(Lib.AndroidX.material)
     implementation(Lib.Firebase.firestore)
     implementation(Lib.Navigation.fragment)

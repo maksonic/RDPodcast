@@ -1,6 +1,7 @@
 package ru.maksonic.rdpodcast.screen.podcast_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -10,17 +11,16 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.RequestManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import ru.maksonic.rdpodcast.core.PlayerSheetStateListener
 import ru.maksonic.rdpodcast.core.base.presentation.BaseFragment
 import ru.maksonic.rdpodcast.core.base.presentation.Delay
-import ru.maksonic.rdpodcast.core.ui.Player
-import ru.maksonic.rdpodcast.core.ui.ToolBarBehavior
 import ru.maksonic.rdpodcast.feature.podcast.PodcastAdapter
 import ru.maksonic.rdpodcast.navigation.api.Navigator
 import ru.maksonic.rdpodcast.navigation.api.navigationData
 import ru.maksonic.rdpodcast.screen.podcast_list.databinding.ScreenPodcastListBinding
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
+import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
 import ru.maksonic.rdpodcast.shared.ui_resources.UiVisibility.gone
 import ru.maksonic.rdpodcast.shared.ui_resources.UiVisibility.visible
 import javax.inject.Inject
@@ -40,6 +40,9 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
     @Inject
     lateinit var imageLoader: RequestManager
 
+    @Inject
+    lateinit var playerBottomSheetStateListener: PlayerSheetStateListener
+
     private var _adapter: PodcastAdapter? = null
     private val adapter: PodcastAdapter
         get() = requireNotNull(_adapter)
@@ -51,7 +54,6 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
     private val viewModel: PodcastListViewModel by viewModels()
 
     override fun prepareView(savedInstanceState: Bundle?) {
-        (activity as ToolBarBehavior).hideMainToolbar()
         _passedData = navigationData as? CategoryUi
         lifecycleScope.launch {
             viewModel.state
@@ -75,13 +77,16 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
     override fun initRecyclerAdapter() {
         _adapter = PodcastAdapter(
             imageLoader,
-            onClick = {
-                (activity as Player).playClicked()
-                (activity as Player).setPodcastInfo(
-                    categoryName = passedData.name,
-                    podcastName = it?.name,
-                    podcastImg = it?.image
-                )
+            onClick = { podcast ->
+                playerBottomSheetStateListener.setExpandState()
+                selectPodcast(passedData.name, podcast)
+           //     Log.e("AAA", podcast.name)
+                /* (activity as Player).playClicked()
+                 (activity as Player).setPodcastInfo(
+                     categoryName = passedData.name,
+                     podcastName = it?.name,
+                     podcastImg = it?.image
+                 )*/
             },
             onMoreClick = {
                 navigator.showPodcastAction(it)
@@ -167,6 +172,18 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
         }
     }
 
+    private fun selectPodcast(
+        category: String,
+        podcast: PodcastUi
+    ) {
+        viewModel.dispatch(
+            PodcastListFeature.Msg.Ui.SelectPodcast(
+                category,
+                podcast
+            )
+        )
+    }
+
     override fun fetchDataAction() = viewModel.dispatch(
         PodcastListFeature.Msg.Ui.FetchPodcasts(passedData.categoryId)
     )
@@ -174,8 +191,4 @@ class ScreenPodcastList : BaseFragment<ScreenPodcastListBinding>(), PodcastListF
     override fun refreshDataAction(category: String?) =
         viewModel.dispatch(PodcastListFeature.Msg.Ui.RefreshPodcasts(category))
 
-    override fun onDestroy() {
-        super.onDestroy()
-        (activity as ToolBarBehavior).showMainToolbar()
-    }
 }

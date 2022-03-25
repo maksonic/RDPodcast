@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class PodcastUi(
-    val id: Long,
+    val id: Long? = null,
     val categoryId: String = "",
     val name: String = "",
     val image: String = "",

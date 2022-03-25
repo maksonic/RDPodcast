@@ -2,6 +2,7 @@ package ru.maksonic.rdpodcast.navigation.api
 
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import ru.maksonic.rdpodcast.shared.ui_model.CategoryUi
 import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
 import javax.inject.Inject
@@ -12,7 +13,6 @@ import javax.inject.Inject
 typealias Navigator = Router.Base
 
 interface Router {
-    fun showOnboarding()
     fun showAuthSheet()
     // Auth
     fun authToPrivacy(data: Parcelable?)
@@ -21,14 +21,28 @@ interface Router {
     //Categories
     fun toCategoryPodcastList(category: CategoryUi?)
     fun showPodcastAction(podcast: PodcastUi?)
+    fun skipOnboarding()
+    //Main
+    fun mainToUserProfile()
+    fun mainToSettings()
 
     class Base @Inject constructor(val fragment: Fragment) : Router {
-        override fun showOnboarding() {
-            fragment.navigate(R.id.action_mainScreen_to_onboarding_graph)
-        }
 
+        override fun skipOnboarding() {
+            fragment.navigate(R.id.action_onboardingScreen_to_mainScreen)
+        }
         override fun showAuthSheet() {
             fragment.navigate(R.id.action_onboardingScreen_to_auth_graph)
+        }
+
+        override fun mainToUserProfile() {
+            Navigation.findNavController(fragment.requireActivity(), R.id.navGraphContainer)
+                .navigate(R.id.action_mainScreen_to_profileScreen)
+        }
+
+        override fun mainToSettings() {
+            Navigation.findNavController(fragment.requireActivity(), R.id.navGraphContainer)
+                .navigate(R.id.action_mainScreen_to_settingsScreen)
         }
 
         /* AUTH SCREEN FLOW */

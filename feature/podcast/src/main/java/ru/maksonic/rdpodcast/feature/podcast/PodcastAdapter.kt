@@ -16,26 +16,26 @@ import ru.maksonic.rdpodcast.shared.ui_model.PodcastUi
  */
 class PodcastAdapter(
     private val imageLoader: RequestManager,
-    private val onClick: (PodcastUi?) -> Unit,
-    private val onMoreClick: (PodcastUi?) -> Unit,
+    private val onClick: (PodcastUi) -> Unit,
+    private val onMoreClick: (PodcastUi) -> Unit,
 ) : ListAdapter<PodcastUi, PodcastAdapter.PodcastViewHolder>(PodcastItemDiffUtil()) {
 
     private var selectedPodcast = 0
 
     inner class PodcastViewHolder(
         private val binding: ItemPodcastBinding,
-        private val onClick: (PodcastUi?) -> Unit
+        private val onClick: (PodcastUi) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        private var currentPodcast: PodcastUi? = null
+        private var currentPodcast: PodcastUi = PodcastUi()
 
         init {
             binding.podcastItem.apply {
                 click {
                     onClick.invoke(currentPodcast)
                     setSelectedItemBackgroundColor()
-                    if (selectedPodcast != adapterPosition) {
+                    if (selectedPodcast != bindingAdapterPosition) {
                         notifyItemChanged(selectedPodcast)
-                        selectedPodcast = adapterPosition
+                        selectedPodcast = bindingAdapterPosition
                     }
                 }
                 setOnLongClickListener {
@@ -53,7 +53,7 @@ class PodcastAdapter(
             if (selectedPodcast == -1) {
                 setUnSelectedItemBackgroundColor()
             } else {
-                if (selectedPodcast == adapterPosition) {
+                if (selectedPodcast == bindingAdapterPosition) {
                    setSelectedItemBackgroundColor()
                 } else {
                     setUnSelectedItemBackgroundColor()

@@ -17,9 +17,11 @@ class PodcastListViewModel @Inject constructor(
 ) : FeatureHolder<PodcastListFeature.Msg, PodcastListFeature.State, PodcastListFeature.Cmd>(
     initState = PodcastListFeature.State.Loading,
     initCommands = emptySet(),
-    PodcastListFeature.Cmd::class to PodcastsCmdHandler(interactor, mapper)) {
+    PodcastListFeature.Cmd::class to PodcastsCmdHandler(interactor, mapper)
+) {
 
-    override fun update(msg: PodcastListFeature.Msg, state: PodcastListFeature.State
+    override fun update(
+        msg: PodcastListFeature.Msg, state: PodcastListFeature.State
     ): UpdateResult = when (msg) {
         is PodcastListFeature.Msg.Ui.FetchPodcasts -> PodcastListFeature.State.Loading to setOf(
             PodcastListFeature.Cmd.OnFetchCloudPodcast(msg.category)
@@ -28,17 +30,22 @@ class PodcastListViewModel @Inject constructor(
             PodcastListFeature.Cmd.OnFetchCloudPodcast(msg.category)
         )
         is PodcastListFeature.Msg.Internal.FetchingResult -> {
-            PodcastListFeature.State.Fetched(fetchedPodcasts = msg.podcasts, msg.podcastCount
+            PodcastListFeature.State.Fetched(
+                fetchedPodcasts = msg.podcasts, msg.podcastCount
             ) to emptySet()
         }
 
         is PodcastListFeature.Msg.Internal.RefreshingResult -> {
-            PodcastListFeature.State.Refreshed(refreshedCategories = msg.refreshed, msg.podcastCount
+            PodcastListFeature.State.Refreshed(
+                refreshedCategories = msg.refreshed, msg.podcastCount
             ) to emptySet()
         }
 
         is PodcastListFeature.Msg.Internal.ShowError -> {
             PodcastListFeature.State.Error(message = msg.message) to emptySet()
         }
+        is PodcastListFeature.Msg.Ui.SelectPodcast -> state to setOf(
+            PodcastListFeature.Cmd.SelectCurrentPodcast(msg.category, msg.podcast,)
+        )
     }
 }

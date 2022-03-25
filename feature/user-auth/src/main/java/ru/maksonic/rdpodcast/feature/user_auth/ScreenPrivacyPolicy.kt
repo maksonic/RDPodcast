@@ -18,10 +18,11 @@ class ScreenPrivacyPolicy : BaseFullScreenBottomSheetDialog<ScreenPrivacyBinding
         get() = ScreenPrivacyBinding::inflate
 
     override fun prepareView(savedInstanceState: Bundle?) {
-        val data = navigationData as? PrivacyPolicy ?: return
+        val data = navigationData as PrivacyPolicy
+        binding.toolBarPrivacy.initToolbar(data.title, navIcon = R.drawable.ic_expand_more, fragment = this)
         setScreenContent(data.content)
     }
 
-    private fun setScreenContent(data: String) = with(binding) { content.text = data }
+    private fun setScreenContent(data: String?) = with(binding) { content.text = data }
 }
 

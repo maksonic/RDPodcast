@@ -19,7 +19,7 @@ object BuildPlugin {
     }
 
     object ToolsGradle {
-        private const val version = "7.0.4"
+        private const val version = "7.1.2"
         const val init = "com.android.tools.build:gradle:$version"
     }
 

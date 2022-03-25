@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/indicatorLayout"
-    android:layout_height="32dp"
+    android:layout_height="@dimen/padding_32dp"
     android:gravity="center"
     android:orientation="vertical">
-
-    <View
-        android:id="@+id/bottomSheetCancelableIndicator"
-        android:layout_width="32dp"
-        android:layout_height="6dp"
-        android:background="@drawable/indicator_bottom_sheet"
-        android:padding="@dimen/padding_4dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/indicator_bottom_sheet"/>
 </LinearLayout>

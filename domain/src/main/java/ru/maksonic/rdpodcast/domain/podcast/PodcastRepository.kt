@@ -8,6 +8,13 @@ import ru.maksonic.rdpodcast.core.data.Repository
 /**
  * @Author: maksonic on 25.02.2022
  */
-interface PodcastRepository<E: Abstract.DomainObject> : Repository<E> {
+interface PodcastRepository<E : Abstract.DomainObject> : Repository<E> {
     suspend fun currentPodcast(podcast: PodcastDomain): Flow<Result<PodcastDomain>>
+    /*suspend fun setCurrentPodcastUi(
+        podcastCategory: String,
+        podcastName: String,
+        podcastImage: String?
+    )
+
+    suspend fun getCurrentPodcastUi(): Result<PodcastDomain>*/
 }

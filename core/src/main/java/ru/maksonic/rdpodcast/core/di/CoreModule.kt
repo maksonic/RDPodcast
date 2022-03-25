@@ -1,6 +1,7 @@
 package ru.maksonic.rdpodcast.core.di
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -12,6 +13,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import ru.maksonic.rdpodcast.core.PlayerBottomSheetStateListener
 import ru.maksonic.rdpodcast.core.ResourceProvider
 import ru.maksonic.rdpodcast.core.data.NetworkException
 import ru.maksonic.rdpodcast.core.R
@@ -42,4 +44,9 @@ object CoreModule {
                 .error(R.drawable.podcast_image)
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
         )
+
+    @Singleton
+    @Provides
+    fun providePlayerBottomSheetListener(fragment: Fragment): PlayerBottomSheetStateListener =
+        PlayerBottomSheetStateListener.Base(fragment)
 }

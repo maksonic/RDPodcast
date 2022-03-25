@@ -6,6 +6,7 @@ import org.gradle.api.JavaVersion
 object Config {
     const val applicationId = "ru.maksonic.rdpodcast"
     const val kotlinVersion = "1.5.31"
+    const val buildToolsVersion = "30.0.1"
     const val compileSdk = 32
     const val targetSdk = 31
     const val minSdk = 23

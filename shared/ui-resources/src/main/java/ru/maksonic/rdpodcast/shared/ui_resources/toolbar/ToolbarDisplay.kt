@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import ru.maksonic.rdpodcast.shared.ui_resources.R
 import ru.maksonic.rdpodcast.shared.ui_resources.databinding.ToolbarDisplayBinding
 
 /**
@@ -24,16 +23,15 @@ class ToolbarDisplay @JvmOverloads constructor(
 
     init {}
 
-    override fun initToolbar(title: String?, navIcon: Int?, fragment: Fragment?) {
+    override fun initToolbar(toolBarTitle: String, navIcon: Int, fragment: Fragment) {
         with(binding) {
-            toolBarTitle.text = title.toString()
             customToolBar.apply {
-                setNavigationIcon(R.drawable.ic_arrow_back)
+                title = toolBarTitle
+                setNavigationIcon(navIcon)
                 setNavigationOnClickListener {
-                    fragment?.requireActivity()?.onBackPressed()
+                    fragment.requireActivity().onBackPressed()
                 }
             }
-
         }
     }
 }

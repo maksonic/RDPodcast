@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import ru.maksonic.rdpodcast.core.R
-
 
 /**
  * @Author: maksonic on 05.02.2022
@@ -39,7 +39,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     private fun toolbarBackPressed() {
         view?.findViewById<Toolbar>(R.id.toolBar)
-            ?.setNavigationOnClickListener { requireActivity().onBackPressed() }
+            ?.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
     override fun onDestroyView() {

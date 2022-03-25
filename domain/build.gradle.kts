@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
+    implementation(Lib.AndroidX.dataStore)
     implementation(Lib.Jetbrains.coroutinesAndroid)
 
     implementation(Lib.Dagger.hilt)

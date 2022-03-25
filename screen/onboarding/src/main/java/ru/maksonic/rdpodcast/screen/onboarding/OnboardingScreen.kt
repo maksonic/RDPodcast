@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import ru.maksonic.rdpodcast.core.base.presentation.BaseFragment
 import ru.maksonic.rdpodcast.core.base.presentation.BaseFullScreenBottomSheetDialog
 import ru.maksonic.rdpodcast.core.ui.DebounceClickListener
 import ru.maksonic.rdpodcast.navigation.api.Navigator
@@ -18,17 +19,12 @@ import javax.inject.Inject
  * @Author: maksonic on 05.02.2022
  */
 @AndroidEntryPoint
-class OnboardingScreen : BaseFullScreenBottomSheetDialog<ScreenOnboardingBinding>() {
+class OnboardingScreen : BaseFragment<ScreenOnboardingBinding>() {
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> ScreenOnboardingBinding =
         ScreenOnboardingBinding::inflate
 
     @Inject
     lateinit var navigator: Navigator
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetWithoutShadowDialog)
-    }
 
     override fun prepareView(savedInstanceState: Bundle?) {
         with(binding) {
@@ -42,7 +38,7 @@ class OnboardingScreen : BaseFullScreenBottomSheetDialog<ScreenOnboardingBinding
         override fun debounceClick(v: View?) {
             with(binding) {
                 when (v?.id) {
-                    btnSkipOnboarding.id -> requireDialog().dismiss()
+                    btnSkipOnboarding.id -> navigator.skipOnboarding()
                     btnShowAuthBottomSheet.id -> navigator.showAuthSheet()
                 }
             }
